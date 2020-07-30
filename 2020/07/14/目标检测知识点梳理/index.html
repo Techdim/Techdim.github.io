@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>目标检测知识点梳理 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="本文参考：https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;37108289 目标检测与图像分类的区别看下图 图像分类（左）和目标检测（右）的区别是比较直观和简单的。在图像分类中，整幅图像被分类为单一的标签。而在目标检测中，我们的神经网络还要找出图像中目标的位置（有可能是多个）。 他们的主要区别如下图像识别    输入：一张图像输入    输出：一个类别标签输出目标检测    输入： 一张">
+<meta property="og:type" content="article">
+<meta property="og:title" content="目标检测知识点梳理">
+<meta property="og:url" content="http://yoursite.com/2020/07/14/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="本文参考：https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;37108289 目标检测与图像分类的区别看下图 图像分类（左）和目标检测（右）的区别是比较直观和简单的。在图像分类中，整幅图像被分类为单一的标签。而在目标检测中，我们的神经网络还要找出图像中目标的位置（有可能是多个）。 他们的主要区别如下图像识别    输入：一张图像输入    输出：一个类别标签输出目标检测    输入： 一张">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://pic3.zhimg.com/v2-a3635b4f7ec6d00d44ee01f06c3cba36_r.jpg">
+<meta property="og:image" content="https://pic3.zhimg.com/80/v2-6e03c8c9e2bff243c3041718e8c9933d_720w.jpg">
+<meta property="og:image" content="https://pic2.zhimg.com/v2-f33f2c50c80f0970257b8191a426ec63_b.jpg">
+<meta property="og:image" content="https://pic2.zhimg.com/80/v2-f33f2c50c80f0970257b8191a426ec63_720w.jpg">
+<meta property="article:published_time" content="2020-07-14T02:36:00.000Z">
+<meta property="article:modified_time" content="2020-07-20T02:38:17.113Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="深度学习">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic3.zhimg.com/v2-a3635b4f7ec6d00d44ee01f06c3cba36_r.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-目标检测知识点梳理" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/07/14/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86/" class="article-date">
+  <time datetime="2020-07-14T02:36:00.000Z" itemprop="datePublished">2020-07-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      目标检测知识点梳理
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/37108289">https://zhuanlan.zhihu.com/p/37108289</a></p>
+<h1 id="目标检测与图像分类的区别"><a href="#目标检测与图像分类的区别" class="headerlink" title="目标检测与图像分类的区别"></a>目标检测与图像分类的区别</h1><p>看下图<br><img src="https://pic3.zhimg.com/v2-a3635b4f7ec6d00d44ee01f06c3cba36_r.jpg"></p>
+<p>图像分类（左）和目标检测（右）的区别是比较直观和简单的。在图像分类中，整幅图像被分类为单一的标签。而在目标检测中，我们的神经网络还要找出图像中目标的位置（有可能是多个）。</p>
+<p>他们的主要区别如下<br>图像识别<br>    输入：一张图像输入<br>    输出：一个类别标签输出<br>目标检测<br>    输入： 一张图片<br>    输出：<br>       × 一个边界框列表，或者一幅图像中每个对象的（x,y）坐标<br>        × 与每个边界框关联的类别标签<br>        × 与每个边界框和类别标签关联的概率或者置信度得分  </p>
+<a id="more"></a>
+
+<h2 id="端到端的目标检测模型"><a href="#端到端的目标检测模型" class="headerlink" title="端到端的目标检测模型"></a>端到端的目标检测模型</h2><p><img src="https://pic3.zhimg.com/80/v2-6e03c8c9e2bff243c3041718e8c9933d_720w.jpg"></p>
+<p>如图可以看到这是一个目标检测模型(SSD)的基本结构</p>
+<ol>
+<li>适合目标检测框架的基本网络(back-bone,主干网络)</li>
+</ol>
+<p>back-bone就是常用的分类 CNN 架构，包括：</p>
+<ul>
+<li>VGGNet</li>
+<li>ResNet</li>
+<li>MobileNet</li>
+<li>DenseNet</li>
+</ul>
+<p>通常这些网络需要大数据集上进行预训练来进行分类，例如 ImageNet，它们可以学习到很多具有鉴别能力的滤波器。</p>
+<p>目标检测框架由很多组成部分和子模块构成。例如，Faster R-CNN 框架包括：</p>
+<ul>
+<li>候选区域网络（RPN）</li>
+<li>一组锚点</li>
+<li>ROI 池化模块</li>
+<li>最终基于区域的卷积神经网络</li>
+</ul>
+<p>在使用 SSD（单步检测器，single shot detectors）时，具有以下的组成部分：</p>
+<ul>
+<li>多框（MultiBox）</li>
+<li>先验（Priors）</li>
+<li>固定先验（Fixed priors）</li>
+</ul>
+<p>back-bone只是整个深度学习目标检测框架的众多组件之一，通常，我们需要在基本网络上进行修剪这些修剪包括：</p>
+<ul>
+<li>修改网络变成全卷积形式，使之可以接受任意维度的图像输入。</li>
+<li>剪除基本网络中更深层的卷积和池化层，将它们以一系列新层（SSD）、新模块（Faster R-CNN），或者这两者的一些组合代替。</li>
+</ul>
+<p>意思是移除基本网络中的一些原始卷积层，将它们用新层替代。网络手术也是讲究策略的，我们移除一些不需要的部分，然后用一组新的部分来替代它们。</p>
+<p>当我们开始训练我们的框架进行目标检测时，（1）新层、模块和（2）基本网络的权重都被修改了。</p>
+<p><strong>我是如何计算一个深度学习目标检测器的准确度的？</strong></p>
+<p>在评价目标检测器的性能时我们使用了一个叫做均值平均精度（mAP）的指标，它是以我们数据集中所有类别的交并比（IoU）为基础的。</p>
+<ul>
+<li>交并比（IoU）</li>
+</ul>
+<p><img src="https://pic2.zhimg.com/v2-f33f2c50c80f0970257b8191a426ec63_b.jpg"></p>
+<p><img src="https://pic2.zhimg.com/80/v2-f33f2c50c80f0970257b8191a426ec63_720w.jpg"></p>
+<p>图 5： 在这个交并比的可视化例子中，标注边界框（绿色）可以与预测的边界框（红色）进行对比。IoU 与 mAP 一起被用来评价一个深度学习目标检测器的精度。计算 IoU 的简单方程如图 5（右）所示。</p>
+<p>你通常会发现 IoU 和 mAP 被用于评价 HOG+线性 SVM 检测器、Haar cascades 以及基于深度学习的方法的性能；但是请记住，实际用于生成预测边界框的算法并不是那么重要。</p>
+<p>任何一个以预测边界框作（以及可选择的标签）为输出的算法都可以用 IoU 来评价。更一般的地，为了使用 IoU 来评价任意一个目标检测器，我们需要：</p>
+<p>1. 真实的边界框（也就是测试集中表明我们的目标在图像的哪个位置的人工标签）</p>
+<p>2. 模型预测到的边界框</p>
+<p>3. 如果你想一起计算召回率和精度，那么还需要真实类别标签和预测类别标签</p>
+<p>在图 5（左）中，我展示了真实边界框（绿色）与预测边界框（红色）相比的可视化例子。IoU 的计算可以用图 5 右边的方程表示。</p>
+<p>仔细检查这个方程你会发现，IoU 就是一个比值。在分子项中，我们计算了真实边界框和预测边界框重叠的区域。分母是一个并集，或者更简单地说，是由预测边界框和真实边界框所包括的区域。两者相除就得到了最终弄的得分：交并比。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/07/14/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86/" data-id="ckd8mnel1000c3ib30trq6tm3" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag">深度学习</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/07/14/pycharm%E5%BF%AB%E6%8D%B7%E9%94%AE/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          pycharm快捷键
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/07/13/Git-%E7%BB%83%E4%B9%A0%E6%9B%B2/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Git 练习曲</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">深度学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" rel="tag">强化学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag">深度学习</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">强化学习</a> <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 20px;">深度学习</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/07/20/proto%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">proto学习记录</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/19/RL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">RL学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/17/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%AE%97%E6%B3%95%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0/">目标检测算法损失函数1</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/16/%E8%A3%85%E9%A5%B0%E5%99%A8/">装饰器</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/15/Python-%E5%81%8F%E5%87%BD%E6%95%B0/">Python 偏函数</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
