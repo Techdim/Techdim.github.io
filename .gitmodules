@@ -1,3 +1,6 @@
 [submodule "themes/black-blue"]
 	path = themes/black-blue
 	url = https://github.com/Techdim/black-blue.git
+[submodule "themes/next"]
+	path = themes/next
+	url = https://github.com/Techdim/hexo-theme-next.git
