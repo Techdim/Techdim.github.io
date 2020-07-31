@@ -1,7 +1,7 @@
 ---
 title: RL学习笔记
 date: 2020-07-19 14:12:42
-tags: [强化学习,强化学习]
+tags: [强化学习,深度学习]
     
 categories: "笔记"
 mathjax: true
