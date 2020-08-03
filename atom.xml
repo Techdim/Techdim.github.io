@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Techdim</title>
+  
+  <subtitle>代码创造我的生活</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://techdim.github.io/"/>
+  <updated>2020-08-03T08:29:10.259Z</updated>
+  <id>http://techdim.github.io/</id>
+  
+  <author>
+    <name>Techdim</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CVPR 论文Bridging the Gap Between Anchor-based and Anchor-free Detection via Adaptive Training Sample Selection</title>
+    <link href="http://techdim.github.io/2020/08/03/cvpr-lun-wen-bridging-the-gap-between-anchor-based-and-anchor-free-detection-via/"/>
+    <id>http://techdim.github.io/2020/08/03/cvpr-lun-wen-bridging-the-gap-between-anchor-based-and-anchor-free-detection-via/</id>
+    <published>2020-08-03T03:17:00.000Z</published>
+    <updated>2020-08-03T08:29:10.259Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;在这篇文章中，作者首先指出了anchor-based和anchor-free方法在训练的过程中如何定义正负样本的。如果在训练的过程中采取相似的正负样本定义策略那么在最终的结果上是几乎相同的。也就是说如何选取正负样本对于目标检测任务是十分重要的。提出一种自动选择正负样本的算法
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="深度学习" scheme="http://Techdim.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="目标检测" scheme="http://Techdim.github.io/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>目标检测算法损失函数1</title>
+    <link href="http://techdim.github.io/2020/07/17/mu-biao-jian-ce-suan-fa-sun-shi-han-shu/"/>
+    <id>http://techdim.github.io/2020/07/17/mu-biao-jian-ce-suan-fa-sun-shi-han-shu/</id>
+    <published>2020-07-17T07:01:18.000Z</published>
+    <updated>2020-08-03T02:37:56.426Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;目标检测任务的损失函数由Classificition Loss（分类损失）和Regeression Loss（回归损失）两部分构成。&lt;br&gt;目标检测任务中损失函数的大致演变过程按照时间线可以划分如为Smooth L1 Loss-&amp;gt;IoU Loss-&amp;gt; GIoU Loss -&amp;gt; DIoU Loss -&amp;gt;CIoU Loss。本文将简单介绍集中IOU损失函数 详细的介绍欢迎阅读全文：&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="深度学习" scheme="http://Techdim.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="深度学习" scheme="http://Techdim.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python 偏函数</title>
+    <link href="http://techdim.github.io/2020/07/15/python-pian-han-shu/"/>
+    <id>http://techdim.github.io/2020/07/15/python-pian-han-shu/</id>
+    <published>2020-07-15T06:43:09.000Z</published>
+    <updated>2020-07-17T10:09:37.005Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;https://baijiahao.baidu.com/s?id=1613459698249266824&amp;amp;wfr=spider&amp;amp;for=pc&quot;&gt;https://baijiahao.baidu.com/s?id=1613459698249266824&amp;amp;wfr=spider&amp;amp;for=pc&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;偏函数（Partial function）是通过将一个函数的部分参数预先绑定为某些值，从而得到一个新的具有较少可变参数的函数。在Python中，可以通过functools中的partial高阶函数来实现偏函数功能。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=2495948681,1851434534&amp;fm=173&amp;app=25&amp;f=JPEG?w=640&amp;h=360&amp;s=F21C7E8657A3D8E45A2B826E03007078&quot;&gt;&lt;/p&gt;
+&lt;p&gt;目前，在网上可以找到很多关于functools.partial用法的文章和例子。比如下面这个：&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>pycharm快捷键</title>
+    <link href="http://techdim.github.io/2020/07/14/pycharm-kuai-jie-jian/"/>
+    <id>http://techdim.github.io/2020/07/14/pycharm-kuai-jie-jian/</id>
+    <published>2020-07-14T09:07:28.000Z</published>
+    <updated>2020-07-17T10:09:37.005Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;pycharm快捷键&quot;&gt;&lt;a href=&quot;#pycharm快捷键&quot; class=&quot;headerlink&quot; title=&quot;pycharm快捷键&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://www.cnblogs.com/xidongyu/p/10995323.html&quot;&gt;pycharm快捷键&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;pycharm快捷键&lt;/p&gt;
+&lt;p&gt;查看PyCharm自带的默认快捷键的方法，请移步：&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>日志模块</title>
+    <link href="http://techdim.github.io/2020/07/10/ri-zhi-mo-kuai/"/>
+    <id>http://techdim.github.io/2020/07/10/ri-zhi-mo-kuai/</id>
+    <published>2020-07-10T05:32:31.000Z</published>
+    <updated>2020-07-17T10:09:37.005Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;日志模块-logging&quot;&gt;&lt;a href=&quot;#日志模块-logging&quot; class=&quot;headerlink&quot; title=&quot;日志模块 logging&quot;&gt;&lt;/a&gt;日志模块 logging&lt;/h1&gt;&lt;p&gt;日志等级系统&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&quot;center&quot;&gt;级别&lt;/th&gt;
+&lt;th align=&quot;center&quot;&gt;何时使用&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td align=&quot;center&quot;&gt;DEBUG&lt;/td&gt;
+&lt;td align=&quot;center&quot;&gt;详细信息，典型地调试问题时会感兴趣。 详细的debug信息。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;center&quot;&gt;INFO&lt;/td&gt;
+&lt;td align=&quot;center&quot;&gt;证明事情按预期工作。 关键事件。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;center&quot;&gt;WARNING&lt;/td&gt;
+&lt;td align=&quot;center&quot;&gt;表明发生了一些意外，或者不久的将来会发生问题（如‘磁盘满了’）。软件还是在正常工作。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;center&quot;&gt;ERROR&lt;/td&gt;
+&lt;td align=&quot;center&quot;&gt;由于更严重的问题，软件已不能执行一些功能了。 一般错误消息。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;center&quot;&gt;CRITICAL&lt;/td&gt;
+&lt;td align=&quot;center&quot;&gt;严重错误，表明软件已不能继续运行了。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;center&quot;&gt;NOTICE&lt;/td&gt;
+&lt;td align=&quot;center&quot;&gt;不是错误，但是可能需要处理。普通但是重要的事件。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;center&quot;&gt;ALERT&lt;/td&gt;
+&lt;td align=&quot;center&quot;&gt;需要立即修复，例如系统数据库损坏。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;center&quot;&gt;EMERGENCY&lt;/td&gt;
+&lt;td align=&quot;center&quot;&gt;紧急情况，系统不可用（例如系统崩溃），一般会通知所有用户。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+</feed>
