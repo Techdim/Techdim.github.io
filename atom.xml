@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://techdim.github.io/"/>
-  <updated>2020-08-03T08:29:10.259Z</updated>
+  <updated>2020-08-04T05:16:16.504Z</updated>
   <id>http://techdim.github.io/</id>
   
   <author>
@@ -18,10 +18,10 @@
   
   <entry>
     <title>CVPR 论文Bridging the Gap Between Anchor-based and Anchor-free Detection via Adaptive Training Sample Selection</title>
-    <link href="http://techdim.github.io/2020/08/03/cvpr-lun-wen-bridging-the-gap-between-anchor-based-and-anchor-free-detection-via/"/>
-    <id>http://techdim.github.io/2020/08/03/cvpr-lun-wen-bridging-the-gap-between-anchor-based-and-anchor-free-detection-via/</id>
+    <link href="http://techdim.github.io/2020/08/03/bridging-the-gap-between-anchor-based-and-anchor-free-detection-via-adaptive-training-sample-selection/"/>
+    <id>http://techdim.github.io/2020/08/03/bridging-the-gap-between-anchor-based-and-anchor-free-detection-via-adaptive-training-sample-selection/</id>
     <published>2020-08-03T03:17:00.000Z</published>
-    <updated>2020-08-03T08:29:10.259Z</updated>
+    <updated>2020-08-04T05:16:16.504Z</updated>
     
     <summary type="html">
     
@@ -29,7 +29,7 @@
       
         
         
-          &lt;p&gt;在这篇文章中，作者首先指出了anchor-based和anchor-free方法在训练的过程中如何定义正负样本的。如果在训练的过程中采取相似的正负样本定义策略那么在最终的结果上是几乎相同的。也就是说如何选取正负样本对于目标检测任务是十分重要的。提出一种自动选择正负样本的算法
+          &lt;p&gt;&amp;ensp;&amp;ensp;在这篇文章中，作者首先指出了anchor-based和anchor-free方法最终训练结果的性能差异主要来来自于正负样本的选择。如果在训练的过程中采取相似的正负样本定义策略那么在最终的结果上是几乎相同的。也就是说如何选取正负样本对于目标检测任务是十
         
       
     

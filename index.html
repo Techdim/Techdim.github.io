@@ -495,7 +495,7 @@
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2020/08/03/cvpr-lun-wen-bridging-the-gap-between-anchor-based-and-anchor-free-detection-via/">
+                    <a href="/2020/08/03/bridging-the-gap-between-anchor-based-and-anchor-free-detection-via-adaptive-training-sample-selection/">
                         <div class="card-image">
                             
                             
@@ -508,7 +508,7 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                在这篇文章中，作者首先指出了anchor-based和anchor-free方法在训练的过程中如何定义正负样本的。如果在训练的过程中采取相似的正负样本定义策略那么在最终的结果上是几乎相同的。也就是说如何选取正负样本对于目标检测任务是十分重要
+                                &ensp;&ensp;在这篇文章中，作者首先指出了anchor-based和anchor-free方法最终训练结果的性能差异主要来来自于正负样本的选择。如果在训练的过程中采取相似的正负样本定义策略那么在最终的结果上是几乎相同的。也就是说如
                             
                         </div>
                         <div class="publish-info">
@@ -748,15 +748,6 @@ WARNING
     }
 
     
-    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
-        left: -66px !important;
-    }
-
-    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
-        left: 0px !important;
-    }
-
-    
 </style>
 <div class="">
     
@@ -766,10 +757,10 @@ WARNING
                    type="playlist"
                    id="6244866"
                    fixed='true'
-                   autoplay='false'
+                   autoplay='true'
                    theme='#42b983'
                    loop='all'
-                   order='random'
+                   order='list'
                    preload='auto'
                    volume='0.7'
                    list-folded='true'
