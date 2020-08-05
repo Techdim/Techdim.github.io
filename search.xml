@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>CVPR 论文Bridging the Gap Between Anchor-based and Anchor-free Detection via Adaptive Training Sample Selection</title>
+      <link href="/2020/08/03/bridging-the-gap-between-anchor-based-and-anchor-free-detection-via-adaptive-training-sample-selection/"/>
+      <url>/2020/08/03/bridging-the-gap-between-anchor-based-and-anchor-free-detection-via-adaptive-training-sample-selection/</url>
+      
+        <content type="html"><![CDATA[<p>&ensp;&ensp;在这篇文章中，作者首先指出了anchor-based和anchor-free方法最终训练结果的性能差异主要来来自于正负样本的选择。如果在训练的过程中采取相似的正负样本定义策略那么在最终的结果上是几乎相同的。也就是说如何选取正负样本对于目标检测任务是十分重要的。因此作者了提出一种自动选择正负样本的算法（ATSS） </p><ul><li><strong>论文地址</strong>：<a href="https://arxiv.org/abs/1912.02424">https://arxiv.org/abs/1912.02424</a></li><li><strong>代码地址</strong>：<a href="https://github.com/sfzhang15/ATSS">https://github.com/sfzhang15/ATSS</a>  </li></ul><h3 id="主要工作"><a href="#主要工作" class="headerlink" title="主要工作"></a>主要工作</h3><ul><li>指出anchor-free和anchor-based方法的根本差异主要来源于正负样本的选择</li><li>提出ATSS( Adaptive Training Sample Selection)方法来根据对象的统计特征自动选择正负样本</li><li>证明每个位置设定多个anchor是无用的操作</li><li>不引入其它额外的开销，在MS COCO上达到SOTA</li></ul><h3 id="anchor-based于anchor-free"><a href="#anchor-based于anchor-free" class="headerlink" title="anchor-based于anchor-free"></a>anchor-based于anchor-free</h3><ol><li>anchor-based<br>主要分为两阶段(two-stage)与一阶段(one-stage)两阶段代表性的算法有Faster-RCNN其优点是准确率高缺点在于运行效率低,一阶段的代表性的算法为SSD其优点在于效率高但是相对而言准确率更低。</li><li>anchor-free<br> 由于FPN和focal loss的提出 anchor-free取得了不俗的成绩，主要两种具有代表性的方法为keypoint-based method 和 center-based method.</li></ol><h3 id="工作1–比较RetinaNet和FCOS比较这两种算法的主要差异："><a href="#工作1–比较RetinaNet和FCOS比较这两种算法的主要差异：" class="headerlink" title="工作1–比较RetinaNet和FCOS比较这两种算法的主要差异："></a>工作1–比较RetinaNet和FCOS比较这两种算法的主要差异：</h3><ol><li><p>RetinaNet在特征图上每个点铺设多个anchor，而FCOS在特征图上每个点只铺设一个中心点，这是数量上的差异。</p></li><li><p>RetinaNet基于anchor和GT之间的IoU和设定的阈值来确定正负样本，而FCOS通过GT中心点和铺设点之间的距离和尺寸来确定正负样本。这1点可以从下图的对比中看到，牛这张图像中蓝色框和点表示GT，红色框表示RetinaNet铺设的anchor，红色点表示FCOS铺设的点，左右两边类似表格上的数值表示最终确定的正负样本，0表示负样本，1表示正样本。</p></li></ol><p><img src="https://img-blog.csdnimg.cn/20200305112436231.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMzc1NjA5,size_16,color_FFFFFF,t_70"></p><ol start="3"><li>RetinaNet通过回归矩形框的2个角点偏置进行预测框位置和大小的预测，而FCOS是基于中心点预测四条边和中心点的距离进行预测框位置和大小的预测。这1点可以从下图的对比中看到，蓝色框和点表示GT，红色框表示RetinaNet的正样本，红色点表示FCOS</li></ol><p><img src="https://img-blog.csdnimg.cn/20200305112504214.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxMzc1NjA5,size_16,color_FFFFFF,t_70"></p><p>为了降低差异性，对比正负样本定义和回归开始状态的差异，将RetinaNet的anchor数改为1，由于FCOS加入了很多trick，这里将RetinaNet与其进行对齐，包括GroupNorm、GIoU loss、限制正样本必须在GT内、Centerness branch以及添加可学习的标量控制FPN的各层的尺寸。</p><p>在经过对齐后，仅剩两个差异的地方：(i) 分类分支上的正负样本定义 (ii) 回归分支上的bbox精调初始状态(start from anchor box or anchor point)</p><p><a href="https://imgchr.com/i/a0A0kq"><img src="https://s1.ax1x.com/2020/08/04/a0A0kq.png" alt="实验结果"></a></p><p>对上面的差异进行交叉实验，发现相同的正负样本定义下的RetinaNet和FCOS性能几乎一样，不同的定义方法性能差异较大，而回归初始状态对性能影响不大。所以，基本可以确定正负样本的确定方法是影响性能的重要一环。</p><h3 id="工作2–ATSS-Adaptive-Training-Sample-Selection-："><a href="#工作2–ATSS-Adaptive-Training-Sample-Selection-：" class="headerlink" title="工作2–ATSS(Adaptive Training Sample Selection)："></a>工作2–ATSS(Adaptive Training Sample Selection)：</h3><p><img src="https://s1.ax1x.com/2020/08/04/a0Ay1U.png" alt="ATSS伪代码"></p><h5 id="ATSS步骤"><a href="#ATSS步骤" class="headerlink" title="ATSS步骤"></a>ATSS步骤</h5><ol><li>对于每个输出的检测层，选计算每个anchor的中心点和目标的中心点的L2距离，选取K个anchor中心点离目标中心点最近的anchor为候选正样本（candidate positive samples）</li><li>计算每个候选正样本和groundtruth之间的IOU，计算这组IOU的均值和方差</li><li>根据方差和均值，设置选取正样本的阈值：t=m+g ；m为均值，g为方差</li><li>根据每一层的t从其候选正样本中选出真正需要加入训练的正样本</li><li>训练</li></ol><h3 id="算法设计原则："><a href="#算法设计原则：" class="headerlink" title="算法设计原则："></a>算法设计原则：</h3><ol><li><p>在RetinaNet中，anchor box与GT中心点越近一般IoU越高，而在FCOS中，中心点越近一般预测的质量越高</p></li><li><p>均值$m_g$表示预设的anchor与GT的匹配程度，均值高则应当提高阈值来调整正样本，均值低则应当降低阈值来调整正样本。标准差$v_g$表示适合GT的FPN层数，标准差高则表示高质量的anchor box集中在一个层中，应将阈值加上标准差来过滤其他层的anchor box，低则表示多个层都适合该GT，将阈值加上标准差来选择合适的层的anchor box，均值和标准差结合作为IoU阈值能够很好地自动选择对应的特征层上合适的anchor box</p></li><li><p>若anchor box的中心点不在GT区域内，则其会使用非GT区域的特征进行预测，这不利于训练，应该排除</p></li></ol><ol start="3"><li><p>根据统计原理，大约16%的anchor box会落在$[m_g+v_g,1]$，尽管候选框的IoU不是标准正态分布，但统计下来每个GT大约有$[0.2 * k\mathcal{L}]$个正样本，与其大小和长宽比无关，而RetinaNet和FCOS则是偏向大目标有更多的正样本，导致训练不公平</p></li><li><p>ATSS仅有一个超参数k，后面的使用会表明ATSS的性能对k不敏感，所以ATSS几乎是hyperparameter-free的。<br><img src="https://s1.ax1x.com/2020/08/04/a0AvNt.png" alt="不同k值的AP"></p></li></ol><h3 id="结论以及实验结果"><a href="#结论以及实验结果" class="headerlink" title="结论以及实验结果"></a>结论以及实验结果</h3><p>论文指出one-stage anchor-based和center-based anchor-free检测算法间的差异主要来自于正负样本的选择，基于此提出ATSS(Adaptive Training Sample Selection)方法，该方法能够自动根据GT的相关统计特征选择合适的anchor box作为正样本，在不带来额外计算量和参数的情况下，能够大幅提升模型的性能，十分有用</p><ol><li>将RetinaNet中的正负样本替换为ATSS，AP提升了2.9%，这样的性能提升几乎是没有任何额外消耗的</li><li>在FCOS上的应用主要用两种：lite版本采用ATSS的思想，从选取GT内的anchor point改为选取每层离GT最近的top k个候选anchor point，提升了0.8%AP；full版本将FCOS的anchor point改为长宽为8S的anchor box来根据ATSS选择正负样本，但仍然使用原始的回归方法，提升了1.4%AP。两种方法找到的anchor point在空间位置上大致相同，但是在FPN层上的选择不太一样。从结果来看，自适应的选择方法比固定的方法更有效</li></ol>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 深度学习 </tag>
+            
+            <tag> 目标检测 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>目标检测算法损失函数1</title>
+      <link href="/2020/07/17/mu-biao-jian-ce-suan-fa-sun-shi-han-shu/"/>
+      <url>/2020/07/17/mu-biao-jian-ce-suan-fa-sun-shi-han-shu/</url>
+      
+        <content type="html"><![CDATA[<p>目标检测任务的损失函数由Classificition Loss（分类损失）和Regeression Loss（回归损失）两部分构成。<br>目标检测任务中损失函数的大致演变过程按照时间线可以划分如为Smooth L1 Loss-&gt;IoU Loss-&gt; GIoU Loss -&gt; DIoU Loss -&gt;CIoU Loss。本文将简单介绍集中IOU损失函数 详细的介绍欢迎阅读全文：</p><a id="more"></a><h2 id="IOU-损失函数"><a href="#IOU-损失函数" class="headerlink" title="IOU 损失函数"></a>IOU 损失函数</h2><p>   IOU 就是常说的交并比<br>  $$IoU=\frac{|A \cap B|}{|A \cup B|}$$<br>  $$IoULoss = -ln(\frac{|A \cap B|}{|A \cup B|})$$</p><p><img src="https://i.loli.net/2020/08/03/HFC1QO93GhmI6nv.png" alt="2020710-1.png"></p><ol><li>优点</li></ol><ul><li>它可以真实的反映预测框的<strong>检测效果</strong>。</li><li>还有一个特性就是<strong>尺度不变性</strong>，也就是对尺度不敏感（scale invariant）， 在regression任务中，判断predict box和atrget box的距离最直接的指标就是IoU。**(满足非负性；同一性；对称性；三角不等性)**</li></ul><ol><li>IOU 的缺点<ul><li>如果两个框没有相交，根据定义，IoU=0，不能反映两者的距离大小（重合度）。同时因为loss=0，没有梯度回传，无法进行学习训练。</li><li>IoU无法精确的反映两者的重合度大小。如下图所示，三种情况IoU都相等，但看得出来他们的重合度是不一样的，左边的图回归的效果最好，右边的最差。</li></ul></li></ol><p><img src="https://picb.zhimg.com/v2-95449558cb098ff9df8c4d31474bd091_b.jpg"></p><h2 id="GIOU"><a href="#GIOU" class="headerlink" title="GIOU"></a>GIOU</h2><p>$$G I o U=I o U-\frac{\left|A_{c}-U\right|}{\left|A_{c}\right|}$$</p><p><em>上面公式的意思是：先计算两个框的最小闭包区域面积</em>$A_c$<em>(通俗理解：**<strong>同时包含了预测框和真实框**</strong>的最小框的面积)，再计算出IoU，再计算闭包区域中不属于两个框的区域占闭包区域的比重，最后用IoU减去这个比重得到GIoU</em></p><p>$$L_{GIOU} = 1-GIOU$$</p><ol><li>优点<ul><li>GIoU对scale不敏感</li><li>GIoU是IoU的下界，在两个框无限重合的情况下，IoU=GIoU=1</li><li>IoU取值[0,1]，但GIoU有对称区间，取值范围[-1,1]。在两者重合的时候取最大值1，在两者无交集且无限远的时候取最小值-1，因此GIoU是一个非常好的距离度量指标。</li><li>与IoU只关注重叠区域不同，<strong>GIoU不仅关注重叠区域，还关注其他的非重合区域</strong>，能更好的反映两者的重合度。</li></ul></li><li>GIoU Loss不足</li></ol><p><img src="https://pic1.zhimg.com/80/v2-d32d8fd6e32ecca603ea9678695b7241_720w.jpg"></p><p>当目标框完全包裹预测框的时候，IoU和GIoU的值都一样，此时GIoU退化为IoU。</p><h2 id="DIOU"><a href="#DIOU" class="headerlink" title="DIOU"></a>DIOU</h2><p>好的目标框回归损失应该考虑三个重要的几何因素：<br><strong>重叠面积，中心点距离，长宽比。</strong><br>基于IoU和GIoU存在的问题，作者提出了两个问题：</p><ol><li>直接最小化anchor框与目标框之间的归一化距离是否可行，以达到更快的收敛速度？</li><li>如何使回归在与目标框有重叠甚至包含时更准确、更快？</li></ol><p>基于问题一，作者提出了DIoU Loss,相对于GIoU Loss收敛速度更快，该Loss考虑了<strong>重叠面积和中心点距离</strong>，但没有考虑到长宽比；<br>针对问题二，作者提出了CIoU Loss，<strong>其收敛的精度更高</strong>，以上三个因素都考虑到了。</p><p>通常基于IoU-based的loss可以定义为 $L=1-I o U+R\left(B, B^{g t}\right)$ ，其中 $R\left(B, B^{g t}\right)$ 定义为预测框 $B$和目标框 $B^{gt}$的惩罚项。</p><ul><li>DIoU中的惩罚项表示为 $R_{D I o U}=\frac{\rho^{2}\left(b, b^{g t}\right)}{c^{2}}$，其中 $b$和$b^{gt}$  分别表示 $B$和$B^{gt}$ 的中心点， $\rho(\cdot)$表示欧式距离， $c$表示  $B$和$B^{gt}$的最小外界矩形的对角线距离，如下图所示。<strong>可以将DIoU替换IoU用于NMS算法当中，也即论文提出的DIoU-NMS,实验结果表明有一定的提升。</strong></li><li>DIoU Loss function定义为：<br>$$L_{D I o U}=1-I o U+\frac{\rho^{2}\left(b, b^{g t}\right)}{c^{2}}$$</li></ul><p><img src="https://picb.zhimg.com/v2-5189de83711cd7bc66bcf4db685d03c6_b.jpg"></p><p>绿色框为目标框，黑色框为预测框，灰色框为两者的最小外界矩形框，d表示目标框和真实框的中心点距离，c表示最小外界矩形框的距离。</p><ol><li>优点<ul><li>尺度不变性</li><li>当两个框完全重合时， $L_{IOU} = L_{GIOU} = L{DIOU} = 0$ ,当2个框不相交时$L_{G I o U}=L_{D I o U} \rightarrow 2$</li><li>DIoU Loss可以直接优化2个框直接的距离，比GIoU Loss收敛速度更快</li><li>对于目标框包裹预测框的这种情况，DIoU Loss可以收敛的很快，而GIoU Loss此时退化为IoU Loss收敛速度较慢</li></ul></li></ol><h2 id="CIOU"><a href="#CIOU" class="headerlink" title="CIOU"></a>CIOU</h2><h3 id="Complete-IoU-Loss"><a href="#Complete-IoU-Loss" class="headerlink" title="Complete-IoU Loss"></a><strong>Complete-IoU Loss</strong></h3><p>CIoU的惩罚项是在DIoU的惩罚项基础上加了一个影响因子 $\alpha v$ ，这个因子把预测框长宽比拟合目标框的长宽比考虑进去。<br>   $$R_{C I o U}=\frac{\rho^{2}\left(b, b^{g t}\right)}{c^{2}}+\alpha v$$<br>  其中 $\alpha$是用于做trade-off的参数， $\alpha = \frac{v}{(1-I o U)+v}$， $v$是用来衡量长宽比一致性的参数，定义为</p><p>  $$v=\frac{4}{\pi^{2}}\left(\arctan \frac{w^{g t}}{h^{g t}}-\arctan \frac{w}{h}\right)^{2}$$</p><p>CIoU Loss function的定义为</p><p>$$L_{CIoU} = 1-IoU + \frac{\rho^2(b,b^{gt})}{c^2}+\alpha v$$</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 深度学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 深度学习 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Python 偏函数</title>
+      <link href="/2020/07/15/python-pian-han-shu/"/>
+      <url>/2020/07/15/python-pian-han-shu/</url>
+      
+        <content type="html"><![CDATA[<p><a href="https://baijiahao.baidu.com/s?id=1613459698249266824&amp;wfr=spider&amp;for=pc">https://baijiahao.baidu.com/s?id=1613459698249266824&amp;wfr=spider&amp;for=pc</a></p><p>偏函数（Partial function）是通过将一个函数的部分参数预先绑定为某些值，从而得到一个新的具有较少可变参数的函数。在Python中，可以通过functools中的partial高阶函数来实现偏函数功能。</p><p><img src="https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=2495948681,1851434534&fm=173&app=25&f=JPEG?w=640&h=360&s=F21C7E8657A3D8E45A2B826E03007078"></p><p>目前，在网上可以找到很多关于functools.partial用法的文章和例子。比如下面这个：</p> <a id="more"></a><p>这个例子比较好地展示了functools.partial的用法，但是并没有讲清楚偏函数究竟应该用在什么样的场景中，总给人一种屠龙之术，华而不实的感觉。</p><p>今天，小编就带大家通过几个实用的例子，来分析一下，善用functools.partial将会给我们的代码带来怎样的变化。</p><p>实例1：用functools.partial生成自己的专属函数</p><p>我们在编码时经常会遇到这样的场景，即根据一个字符串的内容而采取不同的处理逻辑，就像下面这样：</p><p><img src="https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=627977678,4143844896&fm=173&app=25&f=JPEG?w=640&h=187&s=FD9CED1A9BE44D031A6440DE0000C0B2"></p><p>初看之下，这种写法也许还过得去。但是时间一长，你可能就忘了这些正则表达式究竟是干什么的了。于是，我们做了下面的重构：</p><p><img src="https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=4134725729,877781352&fm=173&app=25&f=JPEG?w=640&h=394&s=6890ED1A591EC4CE10FC85DA000080B0"></p><p>这样看起来感觉好多了。事实上，如果只有这三个函数的话，我是可以接受目前的写法的。但是，如果你的代码中有几十个类似的用于判断字符串模式的函数，那么就需要在一个地方把它们统一管理起来，于是就有了下面的写法：</p><p><img src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=3431265541,1855429895&fm=173&app=25&f=JPEG?w=640&h=249&s=ED8AED1A93C84D434A4528DA000050B2"></p><p>在这段代码中，我们通过functools.partial将re.search函数与不同的正则表达式绑定，从而得到了一系列供我们使用的专属函数。通过这种方法，不但使得代码更加简练，而且提高了可读性。</p><p>实例2：用partial生成具有继承关系的辅助对象</p><p>假设我们现在要写一段处理ajax请求的代码，重构前的代码是长这个样子的：</p><p><img src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=1945502743,509136055&fm=173&app=25&f=JPEG?w=640&h=254&s=CD90ED1A9F18404350D195DA000080B1"></p><p>这段代码主要有以下几个问题：</p><p>每次构造HttpResponse对象时，都需要传入”application/json”作为参数</p><p>每次都需要调用json.dumps()</p><p>重复出现的状态码</p><p>以上问题使得这段代码看起来不够精炼，占用了较大篇幅但实际上没有做太多事情。</p><p>所以，我们重构的第一步是要抽象出一个JsonResponse对象来承载返回值：</p><p><img src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=1171901338,1190005407&fm=173&app=25&f=JPEG?w=640&h=100"></p><p>经过第一步重构后的代码如下：</p><p><img src="https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=1945544406,2844630315&fm=173&app=25&f=JPEG?w=639&h=221&s=CD92ED1A9F8048414A74A0DA0000C0B1"></p><p>所有返回HttpResponse 的地方都被我们新引入的JsonResponse所替代。</p><p>接下来，通过functools.partial，我们可以对Response做进一步的抽象，生成一系列JsonResponse的“子类”：</p><p><img src="https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=3363152156,2753786029&fm=173&app=25&f=JPEG?w=640&h=174&s=CD82ED1ACD6549035EC1C9DB0000C0B0"></p><p>最终，重构后的代码如下：</p><p><img src="https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=2288168420,2515930840&fm=173&app=25&f=JPEG?w=640&h=224&s=CD98ED129BF85C035A7420DA0000C0B1"></p><p>这样，我们最大限度地减少了冗余代码，使代码精炼易读。</p><p>我们再来看最后一个例子，看看partial是如何让代码变得简练的。</p><p>实例3：Django emails</p><p><img src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=2126231191,3446601500&fm=173&app=25&f=JPEG?w=640&h=364&s=AD82ED121D9DCCCE10F90DDE0000C0B2"></p><p>看了今天的例子，大家是不是觉得Python提供的partial工具非常的好用呢？不如赶快打开电脑试一下吧。</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>pycharm快捷键</title>
+      <link href="/2020/07/14/pycharm-kuai-jie-jian/"/>
+      <url>/2020/07/14/pycharm-kuai-jie-jian/</url>
+      
+        <content type="html"><![CDATA[<h1 id="pycharm快捷键"><a href="#pycharm快捷键" class="headerlink" title="pycharm快捷键"></a><a href="https://www.cnblogs.com/xidongyu/p/10995323.html">pycharm快捷键</a></h1><p>pycharm快捷键</p><p>查看PyCharm自带的默认快捷键的方法，请移步：</p><a id="more"></a><blockquote><p><a href="https://blog.csdn.net/chichu261/article/details/83025796">PyCharm默认快捷键（系统默认最全）英文版</a></p></blockquote><p>红色高亮显示文本为本人最常用的快捷键。<br>系统默认快捷键之外，还有一些其他的操作技巧，请移步：</p><blockquote><p><a href="https://blog.csdn.net/chichu261/article/details/82784904">PyCharm设置自动换行</a><br><a href="https://blog.csdn.net/chichu261/article/details/82810584">PyCharm使用最多也最常用默认快捷键介绍</a><br><a href="https://blog.csdn.net/chichu261/article/details/82813194">自定义PyCharm快捷键的设置方法</a></p></blockquote><h3 id="1、编辑-Editing"><a href="#1、编辑-Editing" class="headerlink" title="1、编辑　Editing"></a>1、编辑　Editing</h3><table><thead><tr><th>快捷键</th><th>功能（中文）</th><th>功能（英文）</th></tr></thead><tbody><tr><td>Ctrl + Space</td><td>基本代码补全（任何类、方法或变量的名称）</td><td>Basic code completion (the name of any class, method or variable)</td></tr><tr><td>Ctrl + Alt + Space</td><td>类名补全（任何独立于当前导入的项目类的名称）</td><td>Class name completion (the name of any project class independently of current imports)</td></tr><tr><td><code>Ctrl + Shift + Enter</code></td><td><code>语句自动补全</code></td><td><code>Complete statement</code></td></tr><tr><td>Ctrl + P</td><td>参数信息（在方法中调用参数）</td><td>Parameter info (within method call arguments)</td></tr><tr><td><code>Ctrl + Q</code></td><td><code>快速查找文档</code></td><td><code>Quick documentation looku</code>p</td></tr><tr><td>Shift + F1</td><td>外部文档</td><td>External Doc</td></tr><tr><td>Ctrl + mouse over</td><td>代码简介</td><td>code Brief Info</td></tr><tr><td>Ctrl + F1</td><td>在caret中显示错误或警告信息</td><td>Show descriptions of error or warning at caret</td></tr><tr><td>Alt + Insert</td><td>自动生成代码</td><td>Generate code…</td></tr><tr><td>Ctrl + O</td><td>重写方法</td><td>Override methods</td></tr><tr><td>Ctrl + Alt + T</td><td>选中</td><td>Surround with…</td></tr><tr><td><code>Ctrl + /</code></td><td><code>行注释/取消行注释</code></td><td><code>Comment/uncomment with line comment</code></td></tr><tr><td>Ctrl + Shift + /</td><td>块注释/取消块注释</td><td>Comment/uncomment with block comment</td></tr><tr><td>Ctrl + W</td><td>选择新增的代码块</td><td>Select successively increasing code blocks</td></tr><tr><td>Ctrl + Shift + W</td><td>将当前选择回退到上一步的状态</td><td>Decrease current selection to previous state</td></tr><tr><td>Alt + /</td><td>循环往上查找相同单词补全</td><td>Cyclic Expand Word</td></tr><tr><td>Alt + Shift + /</td><td>循环往下查找相同单词补全</td><td>Cyclic Expand Word （Backwrad）</td></tr><tr><td>Alt + Shift + Up</td><td>代码上移</td><td>code move up</td></tr><tr><td>Alt + Shift + Down</td><td>代码下移</td><td>code move down</td></tr><tr><td>Ctrl + Shift + ]</td><td>选择到代码块结束位置</td><td>Select till code block end</td></tr><tr><td>Ctrl + Shift + [</td><td>选择到代码块起始位置</td><td>Select till code block start</td></tr><tr><td><code>Alt + Enter</code></td><td><code>★显示可执行操作和快速修正★</code></td><td><code>Show intention actions and quick-fxes</code></td></tr><tr><td><code>Ctrl + Alt + L</code></td><td><code>格式化文档所有代码</code></td><td><code>Reformat code</code></td></tr><tr><td>Ctrl + Alt + O</td><td>优化导入</td><td>Optimize imports</td></tr><tr><td><code>Ctrl + Alt + I</code></td><td><code>自动缩进已选择的缩进行</code></td><td><code>Auto-indent line(s) Tab Indent selected lines</code></td></tr><tr><td><code>Shift + Tab</code></td><td><code>取消缩进选择行</code></td><td><code>Unindent selected lines</code></td></tr><tr><td><code>Ctrl + X , Shift + Delete</code></td><td><code>剪切</code></td><td><code>Cut current line or selected block to clipboard</code></td></tr><tr><td><code>Ctrl + C , Ctrl + Insert</code></td><td><code>复制</code></td><td><code>Copy current line or selected block to clipboard</code></td></tr><tr><td><code>Ctrl + V , Shift + Insert</code></td><td><code>粘贴</code></td><td><code>Paste from clipboard</code></td></tr><tr><td>Ctrl + Shift + V</td><td>从最近的缓冲区中粘贴内容</td><td>Paste from recent buﬀers…</td></tr><tr><td><code>Ctrl + D</code></td><td><code>向下复制当前行或选择代码块所占的行</code></td><td><code>Duplicate current line or selected block</code></td></tr><tr><td><code>Ctrl + Y</code></td><td><code>删除当前行</code></td><td><code>Delete line at caret</code></td></tr><tr><td>Ctrl + Shift + J</td><td>添加智能线</td><td>Smart line join</td></tr><tr><td>Ctrl + Enter</td><td>智能线分割</td><td>Smart line split</td></tr><tr><td><code>Shift + Enter</code></td><td><code>从任意位置向下另起一行</code></td><td><code>Start new line</code></td></tr><tr><td>Ctrl + Shift + U</td><td>在选定的区域或代码块中切换</td><td>Toggle case for word at caret or selected block</td></tr><tr><td>Ctrl + Delete</td><td>删除到字符尾部</td><td>Delete to word end</td></tr><tr><td>Ctrl + Backspace</td><td>删除到字符头部</td><td>Delete to word start</td></tr><tr><td>Ctrl + NumPad+</td><td>展开当前的代码块</td><td>Expand code block</td></tr><tr><td>Ctrl + NumPad-</td><td>折叠当前的代码块</td><td>Collapse code block</td></tr><tr><td><code>Ctrl + Shift + NumPad+</code></td><td><code>展开全部的代码块</code></td><td><code>Expand all</code></td></tr><tr><td><code>Ctrl + Shift + NumPad-</code></td><td><code>折叠全部的代码块</code></td><td><code>Collapse all</code></td></tr><tr><td>Ctrl + F4</td><td>关闭当前激活的编辑选项卡</td><td>Close active editor tab</td></tr></tbody></table><h3 id="2、运行-Running"><a href="#2、运行-Running" class="headerlink" title="2、运行　Running"></a>2、运行　Running</h3><table><thead><tr><th>快捷键</th><th>功能（中文）</th><th>功能（英文）</th></tr></thead><tbody><tr><td>Alt + Shift + F10</td><td>运行模式配置</td><td>Select configuration and run</td></tr><tr><td>Alt + Shift + F9</td><td>调试模式配置</td><td>Select configuration and debug</td></tr><tr><td><code>Shift + F10</code></td><td><code>运行</code></td><td><code>Run</code></td></tr><tr><td>Shift + F9</td><td>调试</td><td>Debug</td></tr><tr><td><code>Ctrl + Shift + F10</code></td><td><code>运行编辑器配置</code></td><td><code>Run context configuration from editor</code></td></tr><tr><td>Ctrl + Alt + R</td><td>运行manage.py任务</td><td>Run <a href="http://manage.py/">manage.py</a> task</td></tr></tbody></table><h3 id="3、调试-Debugging"><a href="#3、调试-Debugging" class="headerlink" title="3、调试　Debugging"></a>3、调试　Debugging</h3><table><thead><tr><th>快捷键</th><th>功能（中文）</th><th>功能（英文）</th></tr></thead><tbody><tr><td><code>F8 / F7</code></td><td><code>跳过/跳入</code></td><td><code>Step over/into</code></td></tr><tr><td>Shift + F8</td><td>跳出</td><td>Step out</td></tr><tr><td>Alt + F9</td><td>运行到光标所在位置</td><td>Run to cursor</td></tr><tr><td>Alt + F8</td><td>验证表达式</td><td>Evaluate expression</td></tr><tr><td>Ctrl + Alt + F8</td><td>快速验证表达式</td><td>Quick evaluate expression</td></tr><tr><td>F9</td><td>恢复程序</td><td>Resume program</td></tr><tr><td>Ctrl + F8</td><td>切换断点</td><td>Toggle breakpoint</td></tr><tr><td>Ctrl + Shift + F8</td><td>查看断点</td><td>View breakpoints</td></tr></tbody></table><h3 id="4、导航-Navigation"><a href="#4、导航-Navigation" class="headerlink" title="4、导航　Navigation"></a>4、导航　Navigation</h3><table><thead><tr><th>快捷键</th><th>功能（中文）</th><th>功能（英文）</th></tr></thead><tbody><tr><td>Ctrl + N</td><td>跳转到类</td><td>Go to class</td></tr><tr><td>Ctrl + Shift + N</td><td>跳转到文件</td><td>Go to file</td></tr><tr><td>Ctrl + Alt + Shift + N</td><td>跳转到符号位置处</td><td>Go to symbol</td></tr><tr><td>Alt + Right</td><td>跳转到下一个编辑器选项卡</td><td>Go to next editor tab</td></tr><tr><td>Alt + Left</td><td>跳转到上一个编辑器选项卡</td><td>Go to previous editor tab</td></tr><tr><td>F12</td><td>跳回上一步的工具窗口</td><td>Go back to previous tool window</td></tr><tr><td>Esc</td><td>跳转到编辑器（从工具窗口）</td><td>Go to editor (from tool window)</td></tr><tr><td>Shift + Esc</td><td>隐藏活动窗口或隐藏最近活动窗口</td><td>Hide active or last active window</td></tr><tr><td>Ctrl + Shift + F4</td><td>关闭当前开启的运行/信息/发现/…选项卡</td><td>Close active run/messages/find/… tab</td></tr><tr><td>Ctrl + G</td><td>跳转到指定行</td><td>Go to line</td></tr><tr><td>Ctrl + E</td><td>弹出最近打开的文件</td><td>Recent files popup</td></tr><tr><td>Ctrl + Alt + Right</td><td>前进</td><td>Navigate forward</td></tr><tr><td>Ctrl + Alt + Left</td><td>向后退</td><td>Navigate back</td></tr><tr><td>Ctrl + Shift + Backspace</td><td>定位到最近编辑区域</td><td>Navigate to last edit location</td></tr><tr><td>Alt + F1</td><td>在任何视图中选择当前文件或符号</td><td>Select current file or symbol in any view</td></tr><tr><td>Ctrl + B , Ctrl + Click</td><td>跳转到声明</td><td>Go to declaration</td></tr><tr><td>Ctrl + Alt + B</td><td>跳转到实现</td><td>Go to implementation(s)</td></tr><tr><td>Ctrl + Shift + I</td><td>查看快速定义</td><td>Open quick definition lookup</td></tr><tr><td>Ctrl + Shift + B</td><td>跳转类型声明</td><td>Go to type declaration</td></tr><tr><td>Ctrl + U</td><td>跳转到父类方法/超类</td><td>Go to super-method/super-class</td></tr><tr><td>Alt + Up / Down</td><td>切换到上一个/下一个方法</td><td>Go to previous/next method</td></tr><tr><td>Ctrl + ] / [</td><td>移动到代码块结束/开始</td><td>Move to code block end/start</td></tr><tr><td>Ctrl + F12</td><td>弹出文件结构</td><td>File structure popup</td></tr><tr><td>Ctrl + H</td><td>类型层次结构</td><td>Type hierarchy</td></tr><tr><td>Ctrl + Shift + H</td><td>方法的层次结构</td><td>Method hierarchy</td></tr><tr><td>Ctrl + Alt + H</td><td>调用层次结构</td><td>Call hierarchy</td></tr><tr><td>F2 / Shift + F2</td><td>下一条/上一条错误高亮显示</td><td>Next/previous highlighted error</td></tr><tr><td>F4</td><td>编辑源代码</td><td>Edit source</td></tr><tr><td>Ctrl + Enter</td><td>查看源代码</td><td>View source</td></tr><tr><td>Alt + Home</td><td>显示导航栏</td><td>Show navigation bar</td></tr><tr><td>F11</td><td>切换书签</td><td>Toggle bookmark</td></tr><tr><td>Ctrl + Shift + F11</td><td>采用记忆切换书签</td><td>Toggle bookmark with mnemonic</td></tr><tr><td>Ctrl + #[0-9]</td><td>跳转指定编号的书签</td><td>Go to numbered bookmark</td></tr><tr><td>Shift + F11</td><td>显示书签</td><td>Show bookmarks</td></tr></tbody></table><h3 id="5、查找-替换-Search-Replace"><a href="#5、查找-替换-Search-Replace" class="headerlink" title="5、查找/替换　Search/Replace"></a>5、查找/替换　Search/Replace</h3><table><thead><tr><th>快捷键</th><th>功能（中文）</th><th>功能（英文）</th></tr></thead><tbody><tr><td>Ctrl + F / Ctrl + R</td><td>当前文档中查找/替换</td><td>Find/Replace</td></tr><tr><td>F3 / Shift + F3</td><td>查找下一个／查找上一个</td><td>Find next/previous</td></tr><tr><td><code>Ctrl + Shift + F</code></td><td><code>全局查找（可选在当前项目中）</code></td><td><code>Find in path</code></td></tr><tr><td>Ctrl + Shift + R</td><td>全局替换（可选在当前项目中）</td><td>Replace in path</td></tr></tbody></table><h3 id="6、搜索相关-Usage-Search"><a href="#6、搜索相关-Usage-Search" class="headerlink" title="6、搜索相关　Usage Search"></a>6、搜索相关　Usage Search</h3><table><thead><tr><th>快捷键</th><th>功能（中文）</th><th>功能（英文）</th></tr></thead><tbody><tr><td>Alt + F7 / Ctrl + F7</td><td>查找用法／在文件中查找用法</td><td>Find usages / Find usages in file</td></tr><tr><td>Ctrl + Shift + F7</td><td>文件中高亮显示用法</td><td>Highlight usages in file</td></tr><tr><td>Ctrl + Alt + F7</td><td>显示用法</td><td>Show usages</td></tr></tbody></table><h3 id="7、重构-Refactoring"><a href="#7、重构-Refactoring" class="headerlink" title="7、重构　Refactoring"></a>7、重构　Refactoring</h3><table><thead><tr><th>快捷键</th><th>功能（中文）</th><th>功能（英文）</th></tr></thead><tbody><tr><td>F5 / F6</td><td>复制/移动</td><td>Copy / Move</td></tr><tr><td>Alt + Delete</td><td>安全删除</td><td>Safe Delete</td></tr><tr><td><code>Shift + F6</code></td><td><code>重命名</code></td><td><code>Rename</code></td></tr><tr><td>Ctrl + F6</td><td>更改签名</td><td>Change Signature</td></tr><tr><td>Ctrl + Alt + N</td><td>内联</td><td>Inline</td></tr><tr><td>Ctrl + Alt + M</td><td>方法抽取</td><td>Extract Method</td></tr><tr><td>Ctrl + Alt + V</td><td>变量抽取</td><td>Extract Variable</td></tr><tr><td>Ctrl + Alt + F</td><td>字段抽取</td><td>Extract Field</td></tr><tr><td>Ctrl + Alt + C</td><td>常量抽取</td><td>Extract Constant</td></tr><tr><td>Ctrl + Alt + P</td><td>参数抽取</td><td>Extract Parameter</td></tr></tbody></table><h3 id="8、版本控制-本地历史记录-VCS-Local-History"><a href="#8、版本控制-本地历史记录-VCS-Local-History" class="headerlink" title="8、版本控制/本地历史记录　VCS/Local History"></a>8、版本控制/本地历史记录　VCS/Local History</h3><table><thead><tr><th>快捷键</th><th>功能（中文）</th><th>功能（英文）</th></tr></thead><tbody><tr><td><code>Ctrl + K</code></td><td><code>提交项目到VCS</code></td><td><code>Commit project to VCS</code></td></tr><tr><td>Ctrl + T</td><td>从VCS更新项目</td><td>Update project from VCS</td></tr><tr><td>Alt + Shift + C</td><td>查看最新变化</td><td>View recent changes</td></tr><tr><td>Alt + BackQuote (`)</td><td>快速弹出‘VCS’</td><td>‘VCS’ quick popup</td></tr></tbody></table><h3 id="9、模板-Live-Template"><a href="#9、模板-Live-Template" class="headerlink" title="9、模板　Live Template"></a>9、模板　Live Template</h3><table><thead><tr><th>快捷键</th><th>功能（中文）</th><th>功能（英文）</th></tr></thead><tbody><tr><td>Ctrl + Alt + J</td><td>当前行使用模板</td><td>Surround with Live Templates</td></tr><tr><td>Ctrl + J</td><td>插入模板</td><td>Insert Live Template</td></tr></tbody></table><h3 id="10、常规-General"><a href="#10、常规-General" class="headerlink" title="10、常规　General"></a>10、常规　General</h3><table><thead><tr><th>快捷键</th><th>功能（中文）</th><th>功能（英文）</th></tr></thead><tbody><tr><td>Alt + #[0-9]</td><td>打开/关闭相应的工具窗口</td><td>Open corresponding tool window</td></tr><tr><td><code>Ctrl + S</code></td><td><code>全部保存</code></td><td><code>Save all</code></td></tr><tr><td>Ctrl + Alt + Y</td><td>同步</td><td>Synchronize</td></tr><tr><td>Ctrl + Shift + F12</td><td>编辑器界面最大化</td><td>Toggle maximizing editor</td></tr><tr><td>Alt + Shift + F</td><td>添加到收藏</td><td>Add to Favorites</td></tr><tr><td>Alt + Shift + I</td><td>根据配置检查当前文件</td><td>Inspect current file with current profile</td></tr><tr><td>Ctrl + BackQuote (`)</td><td>快速切换现有组合</td><td>Quick switch current scheme</td></tr><tr><td><code>Ctrl + Alt + S</code></td><td><code>打开设置对话框</code></td><td><code>Open Settings dialog</code></td></tr><tr><td>Ctrl + Shift + A</td><td>查找编辑器里的所有操作</td><td>Find Action</td></tr><tr><td>Ctrl + Tab</td><td>在选项卡和工具窗口之间切换</td><td>Switch between tabs and tool window</td></tr></tbody></table><hr>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>日志模块</title>
+      <link href="/2020/07/10/ri-zhi-mo-kuai/"/>
+      <url>/2020/07/10/ri-zhi-mo-kuai/</url>
+      
+        <content type="html"><![CDATA[<h1 id="日志模块-logging"><a href="#日志模块-logging" class="headerlink" title="日志模块 logging"></a>日志模块 logging</h1><p>日志等级系统</p><table><thead><tr><th align="center">级别</th><th align="center">何时使用</th></tr></thead><tbody><tr><td align="center">DEBUG</td><td align="center">详细信息，典型地调试问题时会感兴趣。 详细的debug信息。</td></tr><tr><td align="center">INFO</td><td align="center">证明事情按预期工作。 关键事件。</td></tr><tr><td align="center">WARNING</td><td align="center">表明发生了一些意外，或者不久的将来会发生问题（如‘磁盘满了’）。软件还是在正常工作。</td></tr><tr><td align="center">ERROR</td><td align="center">由于更严重的问题，软件已不能执行一些功能了。 一般错误消息。</td></tr><tr><td align="center">CRITICAL</td><td align="center">严重错误，表明软件已不能继续运行了。</td></tr><tr><td align="center">NOTICE</td><td align="center">不是错误，但是可能需要处理。普通但是重要的事件。</td></tr><tr><td align="center">ALERT</td><td align="center">需要立即修复，例如系统数据库损坏。</td></tr><tr><td align="center">EMERGENCY</td><td align="center">紧急情况，系统不可用（例如系统崩溃），一般会通知所有用户。</td></tr></tbody></table><a id="more"></a><p>一个事件通常需要包括以下几个内容：</p><ul><li>事件发生时间</li><li>事件发生位置</li><li>事件的严重程度–日志级别</li><li>事件内容</li></ul><h1 id="logging-模块"><a href="#logging-模块" class="headerlink" title="logging 模块"></a>logging 模块</h1><p>logging模块是Python内置的标准模块，主要用于输出运行日志，可以设置输出日志的等级、日志保存路径、日志文件回滚等；相比print，具备如下优点：</p><ul><li>可以通过设置不同的日志等级，在release版本中只输出重要信息，而不必显示大量的调试信息；</li><li>print将所有信息都输出到标准输出中，严重影响开发者从标准输出中查看其它数据；logging则可以由开发者决定将信息输出到什么地方，以及怎么输出。</li></ul><table><thead><tr><th>日志等级（level）</th><th>描述</th></tr></thead><tbody><tr><td>DEBUG</td><td>最详细的日志信息，典型应用场景是 问题诊断</td></tr><tr><td>INFO</td><td>信息详细程度仅次于DEBUG，通常只记录关键节点信息，用于确认一切都是按照我们预期的那样进行工作</td></tr><tr><td>WARNING</td><td>当某些不期望的事情发生时记录的信息（如，磁盘可用空间较低），但是此时应用程序还是正常运行的</td></tr><tr><td>ERROR</td><td>由于一个更严重的问题导致某些功能不能正常运行时记录的信息</td></tr><tr><td>CRITICAL</td><td>当发生严重错误，导致应用程序不能继续运行时记录的信息</td></tr></tbody></table><h1 id="logging模块提供了两种记录日志的方式："><a href="#logging模块提供了两种记录日志的方式：" class="headerlink" title="logging模块提供了两种记录日志的方式："></a>logging模块提供了两种记录日志的方式：</h1><ul><li><p>第一种方式是使用logging提供的模块级别的函数</p></li><li><p>第二种方式是使用Logging日志系统的四大组件</p></li></ul>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>自留地</title>
+      <link href="/2019/12/05/zi-liu-di/"/>
+      <url>/2019/12/05/zi-liu-di/</url>
+      
+        <content type="html"><![CDATA[<p>matery:<br><a href="https://github.com/blinkfox/hexo-theme-matery/blob/develop/README_CN.md">https://github.com/blinkfox/hexo-theme-matery/blob/develop/README_CN.md</a></p><p><a href="https://sitoi.cn/posts/63466.html#%E9%85%8D%E7%BD%AE%E6%B8%85%E5%8D%95">https://sitoi.cn/posts/63466.html#%E9%85%8D%E7%BD%AE%E6%B8%85%E5%8D%95</a></p><p><a href="https://www.jianshu.com/p/cf9730925b5c">https://www.jianshu.com/p/cf9730925b5c</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
+    
+    
+    <entry>
+      <title>about</title>
+      <link href="/about/index.html"/>
+      <url>/about/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>categories</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>contact</title>
+      <link href="/contact/index.html"/>
+      <url>/contact/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>friends</title>
+      <link href="/friends/index.html"/>
+      <url>/friends/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>tags</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+  
+</search>

@@ -243,6 +243,19 @@
 </header>
 
     
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
 
 
 
@@ -527,33 +540,6 @@
     
 
     
-        <link rel="stylesheet" href="/libs/gitment/gitment-default.css">
-<link rel="stylesheet" href="/css/gitment.css">
-
-<div class="gitment-card card" data-aos="fade-up">
-    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
-        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
-        <span>评论</span>
-    </div>
-    <div id="gitment-content" class="card-content"></div>
-</div>
-
-<script src="/libs/gitment/gitment.js"></script>
-<script>
-var gitment = new Gitment({
-    id: 'Fri Jul 10 2020 13:32:31 GMT+0800',
-    owner: 'Techdim',
-    repo: 'https://github.com/Techdim/Techdim.github.io',
-    oauth: {
-        client_id: '800b85f6eeae334a31b1',
-        client_secret: 'b32e19e43d2b02181e3c5d69baaf33388c8c0211'
-    }
-});
-
-gitment.render('gitment-content');
-</script>
-
-    
 
     
 
@@ -613,45 +599,28 @@ PyCharm默认快捷键（系统默认最全）英文版
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                Current&nbsp;<i class="far fa-dot-circle"></i>
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/07/10/ri-zhi-mo-kuai/">
+                <a href="/2019/12/05/zi-liu-di/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="日志模块">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="自留地">
                         
-                        <span class="card-title">日志模块</span>
+                        <span class="card-title">自留地</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            日志模块 logging日志等级系统
-
-
-
-级别
-何时使用
-
-
-
-DEBUG
-详细信息，典型地调试问题时会感兴趣。 详细的debug信息。
-
-
-INFO
-证明事情按预期工作。 关键事件。
-
-
-WARNING
-表明发生了一些意外，或者不久的将
+                            matery:https://github.com/blinkfox/hexo-theme-matery/blob/develop/README_CN.md
+https://sitoi.cn/posts/63466.html#%E9%85%
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-10
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-05
                             </span>
                         <span class="publish-author">
                             
@@ -661,7 +630,6 @@ WARNING
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
