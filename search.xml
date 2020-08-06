@@ -8,7 +8,7 @@
       <link href="/2020/08/05/mosaic-shu-ju-zeng-qiang/"/>
       <url>/2020/08/05/mosaic-shu-ju-zeng-qiang/</url>
       
-        <content type="html"><![CDATA[<p>mosaic数据增强理解起来十分方便，主要思想是将四张图片进行随机裁剪，再拼接到一张图上作为训练数据。原文中提到这样做的好处是丰富了图片的背景，并且四张图片拼接在一起变相地提高了batch_size，在进行BN的时候也会计算四张图片，所以对本身batch_size不是很依赖。</p>]]></content>
+        <content type="html"><![CDATA[<p>mosaic数据增强理解起来十分方便，主要思想是将四张图片进行随机裁剪，再拼接到一张图上作为训练数据。原文中提到这样做的好处是丰富了图片的背景，并且四张图片拼接在一起变相地提高了batch_size，在进行BN的时候也会计算四张图片，所以对本身batch_size不是很依赖。</p><p><img src="https://images1.freesion.com/21/82/8276ed46b207c70292e8eac3c6e17175.png"></p><p>YOLO-tensorflow的代码在<a href="https://github.com/klauspa/Yolov4-tensorflow/blob/master/data.py">github</a><br>简单的记录一下。</p>]]></content>
       
       
       <categories>
