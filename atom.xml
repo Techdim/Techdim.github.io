@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://techdim.github.io/"/>
-  <updated>2020-08-04T05:16:16.504Z</updated>
+  <updated>2020-08-06T08:04:41.286Z</updated>
   <id>http://techdim.github.io/</id>
   
   <author>
@@ -17,11 +17,38 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>MOSAIC 数据增强</title>
+    <link href="http://techdim.github.io/2020/08/05/mosaic-shu-ju-zeng-qiang/"/>
+    <id>http://techdim.github.io/2020/08/05/mosaic-shu-ju-zeng-qiang/</id>
+    <published>2020-08-05T09:30:37.638Z</published>
+    <updated>2020-08-06T08:04:41.286Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;mosaic数据增强理解起来十分方便，主要思想是将四张图片进行随机裁剪，再拼接到一张图上作为训练数据。原文中提到这样做的好处是丰富了图片的背景，并且四张图片拼接在一起变相地提高了batch_size，在进行BN的时候也会计算四张图片，所以对本身batch_size不是很依赖
+        
+      
+    
+    </summary>
+    
+    
+      <category term="算法剖析" scheme="http://Techdim.github.io/categories/%E7%AE%97%E6%B3%95%E5%89%96%E6%9E%90/"/>
+    
+    
+      <category term="--目标检测 --数据增强" scheme="http://Techdim.github.io/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B-%E6%95%B0%E6%8D%AE%E5%A2%9E%E5%BC%BA/"/>
+    
+  </entry>
+  
+  <entry>
     <title>CVPR 论文Bridging the Gap Between Anchor-based and Anchor-free Detection via Adaptive Training Sample Selection</title>
     <link href="http://techdim.github.io/2020/08/03/bridging-the-gap-between-anchor-based-and-anchor-free-detection-via-adaptive-training-sample-selection/"/>
     <id>http://techdim.github.io/2020/08/03/bridging-the-gap-between-anchor-based-and-anchor-free-detection-via-adaptive-training-sample-selection/</id>
     <published>2020-08-03T03:17:00.000Z</published>
-    <updated>2020-08-04T05:16:16.504Z</updated>
+    <updated>2020-08-06T06:52:44.494Z</updated>
     
     <summary type="html">
     
@@ -35,6 +62,8 @@
     
     </summary>
     
+    
+      <category term="算法剖析" scheme="http://Techdim.github.io/categories/%E7%AE%97%E6%B3%95%E5%89%96%E6%9E%90/"/>
     
     
       <category term="深度学习" scheme="http://Techdim.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
@@ -164,7 +193,7 @@
     <link href="http://techdim.github.io/2019/12/05/zi-liu-di/"/>
     <id>http://techdim.github.io/2019/12/05/zi-liu-di/</id>
     <published>2019-12-05T02:46:31.000Z</published>
-    <updated>2020-08-05T02:58:36.271Z</updated>
+    <updated>2020-08-06T06:10:06.565Z</updated>
     
     <summary type="html">
     
