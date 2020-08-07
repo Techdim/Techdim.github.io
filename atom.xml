@@ -146,7 +146,7 @@
     <link href="http://techdim.github.io/2020/07/10/ri-zhi-mo-kuai/"/>
     <id>http://techdim.github.io/2020/07/10/ri-zhi-mo-kuai/</id>
     <published>2020-07-10T05:32:31.000Z</published>
-    <updated>2020-07-17T10:09:37.005Z</updated>
+    <updated>2020-08-07T08:53:42.704Z</updated>
     
     <summary type="html">
     
@@ -195,6 +195,46 @@
     </summary>
     
     
+      <category term="编程学习" scheme="http://Techdim.github.io/categories/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="Python" scheme="http://Techdim.github.io/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Argparse的基本用法</title>
+    <link href="http://techdim.github.io/2020/07/10/argparse-de-ji-ben-yong-fa/"/>
+    <id>http://techdim.github.io/2020/07/10/argparse-de-ji-ben-yong-fa/</id>
+    <published>2020-07-10T02:57:17.000Z</published>
+    <updated>2020-08-07T08:53:13.442Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Argparse的基本用法&quot;&gt;&lt;a href=&quot;#Argparse的基本用法&quot; class=&quot;headerlink&quot; title=&quot;Argparse的基本用法&quot;&gt;&lt;/a&gt;Argparse的基本用法&lt;/h1&gt;&lt;p&gt;argparse是Python自带的命令行参数解析包&lt;/p&gt;
+&lt;pre class=&quot;line-numbers language-python&quot; data-language=&quot;python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; argparse
+
+&lt;span class=&quot;token keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    parser &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; argparse&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;ArgumentParser&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;description&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;Demo of argparse&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    parser&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;add_argument&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&#39;-n&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&#39;--name&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; default&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&#39; Li &#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    parser&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;add_argument&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&#39;-y&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&#39;--year&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; default&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&#39;20&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    args &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; parser&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;parse_args&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;args&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    name &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; args&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;name
+    year &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; args&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;year
+    &lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&#39;Hello &amp;#123;&amp;#125;  &amp;#123;&amp;#125;&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token builtin&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;name&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;year&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; __name__ &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&#39;__main__&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    main&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span aria-hidden=&quot;true&quot; class=&quot;line-numbers-rows&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+    
+      <category term="编程学习" scheme="http://Techdim.github.io/categories/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="Python" scheme="http://Techdim.github.io/tags/Python/"/>
     
   </entry>
   

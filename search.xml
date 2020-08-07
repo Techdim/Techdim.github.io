@@ -137,9 +137,46 @@
       <link href="/2020/07/10/ri-zhi-mo-kuai/"/>
       <url>/2020/07/10/ri-zhi-mo-kuai/</url>
       
-        <content type="html"><![CDATA[<h1 id="日志模块-logging"><a href="#日志模块-logging" class="headerlink" title="日志模块 logging"></a>日志模块 logging</h1><p>日志等级系统</p><table><thead><tr><th align="center">级别</th><th align="center">何时使用</th></tr></thead><tbody><tr><td align="center">DEBUG</td><td align="center">详细信息，典型地调试问题时会感兴趣。 详细的debug信息。</td></tr><tr><td align="center">INFO</td><td align="center">证明事情按预期工作。 关键事件。</td></tr><tr><td align="center">WARNING</td><td align="center">表明发生了一些意外，或者不久的将来会发生问题（如‘磁盘满了’）。软件还是在正常工作。</td></tr><tr><td align="center">ERROR</td><td align="center">由于更严重的问题，软件已不能执行一些功能了。 一般错误消息。</td></tr><tr><td align="center">CRITICAL</td><td align="center">严重错误，表明软件已不能继续运行了。</td></tr><tr><td align="center">NOTICE</td><td align="center">不是错误，但是可能需要处理。普通但是重要的事件。</td></tr><tr><td align="center">ALERT</td><td align="center">需要立即修复，例如系统数据库损坏。</td></tr><tr><td align="center">EMERGENCY</td><td align="center">紧急情况，系统不可用（例如系统崩溃），一般会通知所有用户。</td></tr></tbody></table><a id="more"></a><p>一个事件通常需要包括以下几个内容：</p><ul><li>事件发生时间</li><li>事件发生位置</li><li>事件的严重程度–日志级别</li><li>事件内容</li></ul><h1 id="logging-模块"><a href="#logging-模块" class="headerlink" title="logging 模块"></a>logging 模块</h1><p>logging模块是Python内置的标准模块，主要用于输出运行日志，可以设置输出日志的等级、日志保存路径、日志文件回滚等；相比print，具备如下优点：</p><ul><li>可以通过设置不同的日志等级，在release版本中只输出重要信息，而不必显示大量的调试信息；</li><li>print将所有信息都输出到标准输出中，严重影响开发者从标准输出中查看其它数据；logging则可以由开发者决定将信息输出到什么地方，以及怎么输出。</li></ul><table><thead><tr><th>日志等级（level）</th><th>描述</th></tr></thead><tbody><tr><td>DEBUG</td><td>最详细的日志信息，典型应用场景是 问题诊断</td></tr><tr><td>INFO</td><td>信息详细程度仅次于DEBUG，通常只记录关键节点信息，用于确认一切都是按照我们预期的那样进行工作</td></tr><tr><td>WARNING</td><td>当某些不期望的事情发生时记录的信息（如，磁盘可用空间较低），但是此时应用程序还是正常运行的</td></tr><tr><td>ERROR</td><td>由于一个更严重的问题导致某些功能不能正常运行时记录的信息</td></tr><tr><td>CRITICAL</td><td>当发生严重错误，导致应用程序不能继续运行时记录的信息</td></tr></tbody></table><h1 id="logging模块提供了两种记录日志的方式："><a href="#logging模块提供了两种记录日志的方式：" class="headerlink" title="logging模块提供了两种记录日志的方式："></a>logging模块提供了两种记录日志的方式：</h1><ul><li><p>第一种方式是使用logging提供的模块级别的函数</p></li><li><p>第二种方式是使用Logging日志系统的四大组件</p></li></ul>]]></content>
+        <content type="html"><![CDATA[<h1 id="日志模块-logging"><a href="#日志模块-logging" class="headerlink" title="日志模块 logging"></a>日志模块 logging</h1><p>日志等级系统</p><table><thead><tr><th align="center">级别</th><th align="center">何时使用</th></tr></thead><tbody><tr><td align="center">DEBUG</td><td align="center">详细信息，典型地调试问题时会感兴趣。 详细的debug信息。</td></tr><tr><td align="center">INFO</td><td align="center">证明事情按预期工作。 关键事件。</td></tr><tr><td align="center">WARNING</td><td align="center">表明发生了一些意外，或者不久的将来会发生问题（如‘磁盘满了’）。软件还是在正常工作。</td></tr><tr><td align="center">ERROR</td><td align="center">由于更严重的问题，软件已不能执行一些功能了。 一般错误消息。</td></tr><tr><td align="center">CRITICAL</td><td align="center">严重错误，表明软件已不能继续运行了。</td></tr><tr><td align="center">NOTICE</td><td align="center">不是错误，但是可能需要处理。普通但是重要的事件。</td></tr><tr><td align="center">ALERT</td><td align="center">需要立即修复，例如系统数据库损坏。</td></tr><tr><td align="center">EMERGENCY</td><td align="center">紧急情况，系统不可用（例如系统崩溃），一般会通知所有用户。</td></tr></tbody></table><a id="more"></a><p>一个事件通常需要包括以下几个内容：</p><ul><li>事件发生时间</li><li>事件发生位置</li><li>事件的严重程度–日志级别</li><li>事件内容</li></ul><h1 id="logging-模块"><a href="#logging-模块" class="headerlink" title="logging 模块"></a>logging 模块</h1><p>logging模块是Python内置的标准模块，主要用于输出运行日志，可以设置输出日志的等级、日志保存路径、日志文件回滚等；相比print，具备如下优点：</p><ul><li>可以通过设置不同的日志等级，在release版本中只输出重要信息，而不必显示大量的调试信息；</li><li>print将所有信息都输出到标准输出中，严重影响开发者从标准输出中查看其它数据；logging则可以由开发者决定将信息输出到什么地方，以及怎么输出。</li></ul><table><thead><tr><th>日志等级（level）</th><th>描述</th></tr></thead><tbody><tr><td>DEBUG</td><td>最详细的日志信息，典型应用场景是 问题诊断</td></tr><tr><td>INFO</td><td>信息详细程度仅次于DEBUG，通常只记录关键节点信息，用于确认一切都是按照我们预期的那样进行工作</td></tr><tr><td>WARNING</td><td>当某些不期望的事情发生时记录的信息（如，磁盘可用空间较低），但是此时应用程序还是正常运行的</td></tr><tr><td>ERROR</td><td>由于一个更严重的问题导致某些功能不能正常运行时记录的信息</td></tr><tr><td>CRITICAL</td><td>当发生严重错误，导致应用程序不能继续运行时记录的信息</td></tr></tbody></table><h1 id="logging模块提供了两种记录日志的方式："><a href="#logging模块提供了两种记录日志的方式：" class="headerlink" title="logging模块提供了两种记录日志的方式："></a>logging模块提供了两种记录日志的方式：</h1><ul><li><p>第一种方式是使用logging提供的模块级别的函数</p></li><li><p>第二种方式是使用Logging日志系统的四大组件</p></li></ul><h1 id="未完待续………"><a href="#未完待续………" class="headerlink" title="未完待续………"></a>未完待续………</h1>]]></content>
       
       
+      <categories>
+          
+          <category> 编程学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Argparse的基本用法</title>
+      <link href="/2020/07/10/argparse-de-ji-ben-yong-fa/"/>
+      <url>/2020/07/10/argparse-de-ji-ben-yong-fa/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Argparse的基本用法"><a href="#Argparse的基本用法" class="headerlink" title="Argparse的基本用法"></a>Argparse的基本用法</h1><p>argparse是Python自带的命令行参数解析包</p><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> argparse<span class="token keyword">def</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>    parser <span class="token operator">=</span> argparse<span class="token punctuation">.</span>ArgumentParser<span class="token punctuation">(</span>description<span class="token operator">=</span><span class="token string">"Demo of argparse"</span><span class="token punctuation">)</span>    parser<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'-n'</span><span class="token punctuation">,</span><span class="token string">'--name'</span><span class="token punctuation">,</span> default<span class="token operator">=</span><span class="token string">' Li '</span><span class="token punctuation">)</span>    parser<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'-y'</span><span class="token punctuation">,</span><span class="token string">'--year'</span><span class="token punctuation">,</span> default<span class="token operator">=</span><span class="token string">'20'</span><span class="token punctuation">)</span>    args <span class="token operator">=</span> parser<span class="token punctuation">.</span>parse_args<span class="token punctuation">(</span><span class="token punctuation">)</span>    <span class="token keyword">print</span><span class="token punctuation">(</span>args<span class="token punctuation">)</span>    name <span class="token operator">=</span> args<span class="token punctuation">.</span>name    year <span class="token operator">=</span> args<span class="token punctuation">.</span>year    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Hello &#123;&#125;  &#123;&#125;'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span>year<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>    main<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><a id="more"></a><p>上面这段代码当中首先导入一个argparse包，然后使用<code>argparse.ArgumentParser</code>生成一个argparse对象（参数解析器），其中<code>description</code>描述这个解析器的作用。使用<code>add_argument</code>来增加参数，使用<code>parser.parse_argu</code>来解析参数</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 编程学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Python </tag>
+            
+        </tags>
       
     </entry>
     
@@ -173,22 +210,22 @@
     
     
     <entry>
-      <title>categories</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
+      <title>contact</title>
+      <link href="/contact/index.html"/>
+      <url>/contact/index.html</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<h2 id="畅所欲言"><a href="#畅所欲言" class="headerlink" title="畅所欲言"></a>畅所欲言</h2><hr><p>不想</p>]]></content>
       
     </entry>
     
     
     
     <entry>
-      <title>contact</title>
-      <link href="/contact/index.html"/>
-      <url>/contact/index.html</url>
+      <title>categories</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
       
-        <content type="html"><![CDATA[<h2 id="畅所欲言"><a href="#畅所欲言" class="headerlink" title="畅所欲言"></a>畅所欲言</h2><hr><p>不想</p>]]></content>
+        <content type="html"><![CDATA[]]></content>
       
     </entry>
     
