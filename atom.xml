@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://techdim.github.io/"/>
-  <updated>2020-08-06T08:12:41.525Z</updated>
+  <updated>2020-08-07T03:29:13.008Z</updated>
   <id>http://techdim.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://techdim.github.io/2020/08/05/mosaic-shu-ju-zeng-qiang/"/>
     <id>http://techdim.github.io/2020/08/05/mosaic-shu-ju-zeng-qiang/</id>
     <published>2020-08-05T09:30:37.638Z</published>
-    <updated>2020-08-06T08:12:41.525Z</updated>
+    <updated>2020-08-07T03:29:13.008Z</updated>
     
     <summary type="html">
     
@@ -39,7 +39,9 @@
       <category term="算法剖析" scheme="http://Techdim.github.io/categories/%E7%AE%97%E6%B3%95%E5%89%96%E6%9E%90/"/>
     
     
-      <category term="--目标检测 --数据增强" scheme="http://Techdim.github.io/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B-%E6%95%B0%E6%8D%AE%E5%A2%9E%E5%BC%BA/"/>
+      <category term="目标检测" scheme="http://Techdim.github.io/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/"/>
+    
+      <category term="数据增强" scheme="http://Techdim.github.io/tags/%E6%95%B0%E6%8D%AE%E5%A2%9E%E5%BC%BA/"/>
     
   </entry>
   
@@ -98,7 +100,7 @@
     <link href="http://techdim.github.io/2020/07/15/python-pian-han-shu/"/>
     <id>http://techdim.github.io/2020/07/15/python-pian-han-shu/</id>
     <published>2020-07-15T06:43:09.000Z</published>
-    <updated>2020-07-17T10:09:37.005Z</updated>
+    <updated>2020-08-07T02:03:18.431Z</updated>
     
     <summary type="html">
     
@@ -110,6 +112,10 @@
     </summary>
     
     
+      <category term="编程学习" scheme="http://Techdim.github.io/categories/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="Python" scheme="http://Techdim.github.io/tags/Python/"/>
     
   </entry>
   
@@ -118,7 +124,7 @@
     <link href="http://techdim.github.io/2020/07/14/pycharm-kuai-jie-jian/"/>
     <id>http://techdim.github.io/2020/07/14/pycharm-kuai-jie-jian/</id>
     <published>2020-07-14T09:07:28.000Z</published>
-    <updated>2020-07-17T10:09:37.005Z</updated>
+    <updated>2020-08-07T02:03:00.943Z</updated>
     
     <summary type="html">
     
@@ -128,6 +134,10 @@
     </summary>
     
     
+      <category term="编程学习" scheme="http://Techdim.github.io/categories/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="Python" scheme="http://Techdim.github.io/tags/Python/"/>
     
   </entry>
   
