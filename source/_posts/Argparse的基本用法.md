@@ -1,7 +1,8 @@
 ---
-title: daily recording
+title: Argparse的基本用法
 date: 2020-07-10 10:57:17
-tags:
+tags: Python
+categories: 编程学习
 ---
 # Argparse的基本用法
 
