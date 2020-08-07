@@ -1,7 +1,8 @@
 ---
 title: pycharm快捷键
 date: 2020-07-14 17:07:28
-tags:
+tags: Python
+categories: 编程学习
 ---
 
 # [pycharm快捷键](https://www.cnblogs.com/xidongyu/p/10995323.html)

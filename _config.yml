@@ -127,3 +127,23 @@ feed:
   content_limit: 140
   content_limit_delim: ' '
   order_by: -date
+
+  # 看板娘配置
+live2d:
+  enable: true
+  scriptFrom: local
+  pluginRootPath: live2dw/
+  pluginJsPath: lib/
+  pluginModelPath: assets/
+  tagMode: false
+  log: false
+  model:
+    use: live2d-widget-model-miku
+  display:
+    position: right
+    width: 200
+    height: 400
+  mobile:
+    show: true
+  react:
+    opacity: 0.7

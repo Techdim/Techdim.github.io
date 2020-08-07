@@ -1,7 +1,8 @@
 ---
 title: Python 偏函数
 date: 2020-07-15 14:43:09
-tags:
+tags: Python
+categories: 编程学习
 ---
 
 https://baijiahao.baidu.com/s?id=1613459698249266824&wfr=spider&for=pc
