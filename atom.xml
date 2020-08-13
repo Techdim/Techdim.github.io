@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://techdim.github.io/"/>
-  <updated>2020-08-07T03:29:13.008Z</updated>
+  <updated>2020-08-13T09:29:45.712Z</updated>
   <id>http://techdim.github.io/</id>
   
   <author>
@@ -17,11 +17,39 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>深度学习常见的激活函数sigmod、tanh、ReLU、LeakyRelu、Relu6</title>
+    <link href="http://techdim.github.io/2020/08/13/shen-du-xue-xi-chang-jian-de-ji-huo-han-shu-sigmod-tanh-relu-leakyrelu-relu6/"/>
+    <id>http://techdim.github.io/2020/08/13/shen-du-xue-xi-chang-jian-de-ji-huo-han-shu-sigmod-tanh-relu-leakyrelu-relu6/</id>
+    <published>2020-08-13T06:42:47.000Z</published>
+    <updated>2020-08-13T09:29:45.712Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;神经网络模型当中激活函数的作用主要是将线性映射做非线性转换。&lt;/p&gt;
+&lt;h3 id=&quot;sigmod&quot;&gt;&lt;a href=&quot;#sigmod&quot; class=&quot;headerlink&quot; title=&quot;sigmod&quot;&gt;&lt;/a&gt;sigmod&lt;/h3&gt;&lt;p&gt;sigmod激活函数和导数 
+        
+      
+    
+    </summary>
+    
+    
+      <category term="算法剖析" scheme="http://Techdim.github.io/categories/%E7%AE%97%E6%B3%95%E5%89%96%E6%9E%90/"/>
+    
+    
+      <category term="深度学习" scheme="http://Techdim.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>MOSAIC 数据增强</title>
     <link href="http://techdim.github.io/2020/08/05/mosaic-shu-ju-zeng-qiang/"/>
     <id>http://techdim.github.io/2020/08/05/mosaic-shu-ju-zeng-qiang/</id>
     <published>2020-08-05T09:30:37.638Z</published>
-    <updated>2020-08-07T03:29:13.008Z</updated>
+    <updated>2020-08-13T07:10:49.690Z</updated>
     
     <summary type="html">
     
@@ -50,7 +78,7 @@
     <link href="http://techdim.github.io/2020/08/03/bridging-the-gap-between-anchor-based-and-anchor-free-detection-via-adaptive-training-sample-selection/"/>
     <id>http://techdim.github.io/2020/08/03/bridging-the-gap-between-anchor-based-and-anchor-free-detection-via-adaptive-training-sample-selection/</id>
     <published>2020-08-03T03:17:00.000Z</published>
-    <updated>2020-08-06T06:52:44.494Z</updated>
+    <updated>2020-08-13T07:02:21.723Z</updated>
     
     <summary type="html">
     
@@ -79,7 +107,7 @@
     <link href="http://techdim.github.io/2020/07/17/mu-biao-jian-ce-suan-fa-sun-shi-han-shu/"/>
     <id>http://techdim.github.io/2020/07/17/mu-biao-jian-ce-suan-fa-sun-shi-han-shu/</id>
     <published>2020-07-17T07:01:18.000Z</published>
-    <updated>2020-08-03T02:37:56.426Z</updated>
+    <updated>2020-08-13T07:10:38.892Z</updated>
     
     <summary type="html">
     
