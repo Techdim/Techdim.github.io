@@ -1,6 +1,7 @@
 ---
 title: MOSAIC 数据增强
 tags: [目标检测,数据增强]
+data: 2020-08-07 23:17:00
 categories: 算法剖析
 ---
 

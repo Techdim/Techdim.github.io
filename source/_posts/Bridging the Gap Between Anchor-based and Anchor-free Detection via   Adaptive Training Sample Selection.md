@@ -2,11 +2,10 @@
 title: >-
   CVPR 论文Bridging the Gap Between Anchor-based and Anchor-free Detection via
   Adaptive Training Sample Selection
-tags:
-  - 深度学习
-  - 目标检测
+tags: [深度学习,目标检测]
 date: 2020-08-03 11:17:00
 categories: 算法剖析
+
 ---
 
 
