@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Techdim</title>
   
-  <subtitle>代码创造我的生活</subtitle>
+  <subtitle>所有的最好，都不如刚刚好</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://techdim.github.io/"/>
-  <updated>2020-08-31T07:44:38.206Z</updated>
+  <updated>2020-08-31T07:49:18.986Z</updated>
   <id>http://techdim.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://techdim.github.io/2020/08/26/gao-tong-snpe-shi-yong/"/>
     <id>http://techdim.github.io/2020/08/26/gao-tong-snpe-shi-yong/</id>
     <published>2020-08-26T08:35:02.000Z</published>
-    <updated>2020-08-31T07:44:38.206Z</updated>
+    <updated>2020-08-31T07:49:18.986Z</updated>
     
     <summary type="html">
     
@@ -38,6 +38,10 @@
     </summary>
     
     
+      <category term="深度学习" scheme="http://Techdim.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="边缘计算" scheme="http://Techdim.github.io/tags/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97/"/>
     
   </entry>
   
