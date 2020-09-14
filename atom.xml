@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://techdim.github.io/"/>
-  <updated>2020-08-31T07:49:18.986Z</updated>
+  <updated>2020-09-14T02:18:08.408Z</updated>
   <id>http://techdim.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>贪心算法</title>
+    <link href="http://techdim.github.io/2020/09/06/tan-xin-suan-fa/"/>
+    <id>http://techdim.github.io/2020/09/06/tan-xin-suan-fa/</id>
+    <published>2020-09-06T07:35:23.000Z</published>
+    <updated>2020-09-14T02:18:08.408Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;问题1.钞票支付问题。&lt;br&gt;有1元、2元、5元、10元、20元、50元、100元的钞票无穷多张。现使用这些钞票支付x元，最少需要多少张？例如，X=628最佳支付方法：6张100块的，1张20块的，1张5块的，1张2块的，1张1块的；共需要6+1+1+1+1=10张。直觉告
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>高通snpe使用</title>

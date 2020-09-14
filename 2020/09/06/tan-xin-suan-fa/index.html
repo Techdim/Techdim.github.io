@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="日志模块, Techdim">
+    <meta name="keywords" content="贪心算法, Techdim">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>日志模块 | Techdim</title>
+    <title>贪心算法 | Techdim</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -215,12 +215,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">日志模块</h1>
+                    <h1 class="description center-align post-title">贪心算法</h1>
                 </div>
             </div>
         </div>
@@ -335,25 +335,12 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/Python/">
-                                <span class="chip bg-color">Python</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">No tag</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                编程学习
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -362,7 +349,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2020-07-10
+                    2020-09-06
                 </div>
                 
 
@@ -371,14 +358,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    617
+                    994
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    2 Min
+                    4 Min
                 </div>
                 
 
@@ -393,95 +380,117 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="日志模块-logging"><a href="#日志模块-logging" class="headerlink" title="日志模块 logging"></a>日志模块 logging</h1><p>日志等级系统</p>
-<table>
-<thead>
-<tr>
-<th align="center">级别</th>
-<th align="center">何时使用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">DEBUG</td>
-<td align="center">详细信息，典型地调试问题时会感兴趣。 详细的debug信息。</td>
-</tr>
-<tr>
-<td align="center">INFO</td>
-<td align="center">证明事情按预期工作。 关键事件。</td>
-</tr>
-<tr>
-<td align="center">WARNING</td>
-<td align="center">表明发生了一些意外，或者不久的将来会发生问题（如‘磁盘满了’）。软件还是在正常工作。</td>
-</tr>
-<tr>
-<td align="center">ERROR</td>
-<td align="center">由于更严重的问题，软件已不能执行一些功能了。 一般错误消息。</td>
-</tr>
-<tr>
-<td align="center">CRITICAL</td>
-<td align="center">严重错误，表明软件已不能继续运行了。</td>
-</tr>
-<tr>
-<td align="center">NOTICE</td>
-<td align="center">不是错误，但是可能需要处理。普通但是重要的事件。</td>
-</tr>
-<tr>
-<td align="center">ALERT</td>
-<td align="center">需要立即修复，例如系统数据库损坏。</td>
-</tr>
-<tr>
-<td align="center">EMERGENCY</td>
-<td align="center">紧急情况，系统不可用（例如系统崩溃），一般会通知所有用户。</td>
-</tr>
-</tbody></table>
-<a id="more"></a>
-<p>一个事件通常需要包括以下几个内容：</p>
+                <p>问题1.钞票支付问题。<br>有1元、2元、5元、10元、20元、50元、100元的钞票无穷多张。现使用这些钞票支付x元，最少需要多少张？例如，X=628最佳支付方法：6张100块的，1张20块的，1张5块的，1张2块的，1张1块的；共需要6+1+1+1+1=10张。直觉告诉我们：尽可能多的使用面值较大的钞票！贪心法：遵循某种规律，不断贪心的选取当前最优策略的算法设计方法。  </p>
+<p>为何这么做一定是对的？面额为1元、2元、5元、10元、20元、50元、100元，每个面额是比自己小的面额的2倍或以上。所以当使用一张较大面额钞票时，若用较小面额钞票替换，需要两张或更多的钞票！例如：2=1+15=2+2+110=5+520=10+1050=20+20+10100=50+50故，当前最优解即为全局最优解，贪心成立！思考：如果增加7元面额，贪心还成立吗？</p>
+<p>如果有一张7块钱面额 贪心不成立使用动态规划</p>
+<p>需要面额为1的1张，剩余需要支付RMB0。<br>#include &lt;stdio.h&gt;<br>总北需要10张RMB int main（）{//人民币面额请按在意键继续…<br>const int RMB[]={100，50，20，10，5，2，1}；const int NUM=7；//7种面额int x=628；//用RMB最少多少张，组成X？<br>int count=0；for（inti=0；i&lt;NUM；i++）{<br>int use=x/RMB[i]；//需要面额为RMB[i]的use张count+=use；//总计增加use张x=x-RMB[i]*use；//将总额减去使用RMB[i]已组成的金额printf（”需要面额为d的d张，”，RMB[i]，use）；printf（”剩余需要支付RMB 8d.\n”，x）；<br>}<br>printf（”总共需要sd张RMB\n”，count）；return 0；国国<br>}<br>k吻|日④105%·C|品圈图|高</p>
+<p>leetcode 376</p>
+<p>一个整数序列，如果两个相邻元素的差恰好正负（负正）交替出现，则该序列被称为<br>摇摆序列。一个小于2个元素的序列直接为摇摆序列。<br>例如：<br>序列[1，7，4，9，2，5]，相邻元素的差（6，-3，5，-7，3），该序列为摇摆序列。<br>序列[1，4，7，2，5]（3，3，-5，3）、[1，7，4，5，5]（6，-3，1，0）不是摇摆序列。<br>给一个随机序列，求这个序列满足摇摆序列定义的最长子序列的长度。<br>例如：<br>输入[1，7，4，9，2，5]，结果为6；输入[1，17，5，10，13，15，10，5，16，8]，结果为7（[1，17，10，13，10，16，8]<br>）；输入[1，2，3，4，5，6，7，8，9]，结果为2。</p>
+<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">class Solution &#123;
+public:
+    int wiggleMaxLength(vector&lt;int&gt;&amp; nums) &#123;
+
+        if(nums.size()&lt;2)&#123;
+            return nums.size();
+
+        &#125;
+        static const int BEGIN &#x3D; 0;
+        static const int UP &#x3D; 1;
+        static const int DOWN &#x3D; 2;
+        int STATE &#x3D; BEGIN;
+        int max_length &#x3D; 1;
+        for(int i &#x3D; 1;i&lt;nums.size();i++)&#123;
+
+            switch(STATE)&#123;
+                case BEGIN:
+                if(nums[i]&gt;nums[i-1])&#123;
+                    STATE &#x3D; UP;
+                    max_length++;
+                &#125;else if(nums[i]&lt;nums[i-1])&#123;
+                    STATE &#x3D; DOWN;
+                    max_length++;
+                &#125;
+                break;
+                case UP:
+                 if(nums[i]&gt;nums[i-1])&#123;
+                    STATE &#x3D; UP;
+                &#125;else if(nums[i]&lt;nums[i-1])&#123;
+                    STATE &#x3D; DOWN;
+                    max_length++;
+                &#125;
+                break;
+                case DOWN:
+                 if(nums[i]&gt;nums[i-1])&#123;
+                    STATE &#x3D; UP;
+                    max_length++;
+                &#125;else if(nums[i]&lt;nums[i-1])&#123;
+                    STATE &#x3D; DOWN;
+
+                &#125;
+                break;
+
+
+            &#125;
+
+
+
+        &#125;
+
+        return max_length;
+    &#125;
+&#125;;
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>leetcode 402</p>
+<p>给定一个以字符串表示的非负整数 <em>num</em>，移除这个数中的 <em>k</em> 位数字，使得剩下的数字最小。</p>
+<p><strong>注意:</strong></p>
 <ul>
-<li>事件发生时间</li>
-<li>事件发生位置</li>
-<li>事件的严重程度–日志级别</li>
-<li>事件内容</li>
+<li><em>num</em> 的长度小于 10002 且 ≥ <em>k。</em></li>
+<li><em>num</em> 不会包含任何前导零。</li>
 </ul>
-<h1 id="logging-模块"><a href="#logging-模块" class="headerlink" title="logging 模块"></a>logging 模块</h1><p>logging模块是Python内置的标准模块，主要用于输出运行日志，可以设置输出日志的等级、日志保存路径、日志文件回滚等；相比print，具备如下优点：</p>
-<ul>
-<li>可以通过设置不同的日志等级，在release版本中只输出重要信息，而不必显示大量的调试信息；</li>
-<li>print将所有信息都输出到标准输出中，严重影响开发者从标准输出中查看其它数据；logging则可以由开发者决定将信息输出到什么地方，以及怎么输出。</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>日志等级（level）</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>DEBUG</td>
-<td>最详细的日志信息，典型应用场景是 问题诊断</td>
-</tr>
-<tr>
-<td>INFO</td>
-<td>信息详细程度仅次于DEBUG，通常只记录关键节点信息，用于确认一切都是按照我们预期的那样进行工作</td>
-</tr>
-<tr>
-<td>WARNING</td>
-<td>当某些不期望的事情发生时记录的信息（如，磁盘可用空间较低），但是此时应用程序还是正常运行的</td>
-</tr>
-<tr>
-<td>ERROR</td>
-<td>由于一个更严重的问题导致某些功能不能正常运行时记录的信息</td>
-</tr>
-<tr>
-<td>CRITICAL</td>
-<td>当发生严重错误，导致应用程序不能继续运行时记录的信息</td>
-</tr>
-</tbody></table>
-<h1 id="logging模块提供了两种记录日志的方式："><a href="#logging模块提供了两种记录日志的方式：" class="headerlink" title="logging模块提供了两种记录日志的方式："></a>logging模块提供了两种记录日志的方式：</h1><ul>
-<li><p>第一种方式是使用logging提供的模块级别的函数</p>
-</li>
-<li><p>第二种方式是使用Logging日志系统的四大组件</p>
-</li>
-</ul>
-<h1 id="未完待续………"><a href="#未完待续………" class="headerlink" title="未完待续………"></a>未完待续………</h1>
+<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">class Solution &#123;
+public:
+    string removeKdigits(string num, int k) &#123;
+
+        std::vector&lt;int&gt; s;
+        std::string result &#x3D; &quot;&quot;;
+        for(int i &#x3D; 0;i&lt;num.length();i++)&#123;
+            int number &#x3D; num[i] - &#39;0&#39;;
+            while(s.size()!&#x3D;0 &amp;&amp; s[s.size()-1]&gt;number &amp;&amp; k&gt;0)&#123;
+                s.pop_back();
+                k--;
+            &#125;
+            if(number!&#x3D;0||s.size()!&#x3D;0)&#123;
+                s.push_back(number);
+            &#125;
+
+
+
+
+        &#125;
+        while(s.size()!&#x3D;0&amp;&amp; k&gt;0)&#123;
+            s.pop_back();
+            k--;
+        &#125;
+        for(int i &#x3D; 0;i&lt;s.size();i++)&#123;
+            result.append(1,&#39;0&#39;+s[i]);
+        &#125;
+
+        if(result &#x3D;&#x3D; &quot;&quot;)&#123;
+            result &#x3D; &quot;0&quot;;
+        &#125;
+
+        return result;
+
+
+
+
+
+    &#125;
+&#125;;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
             </div>
             <hr/>
 
@@ -493,11 +502,7 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/Python/">
-                                    <span class="chip bg-color">Python</span>
-                                </a>
-                            
+                            <span class="chip bg-color">No tag</span>
                         </div>
                     
                 </div>
@@ -537,56 +542,39 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2020/07/14/pycharm-kuai-jie-jian/">
+                <a href="/2020/09/06/tan-xin-suan-fa/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="pycharm快捷键">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="贪心算法">
                         
-                        <span class="card-title">pycharm快捷键</span>
+                        <span class="card-title">贪心算法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            pycharm快捷键pycharm快捷键
-查看PyCharm自带的默认快捷键的方法，请移步：
-
-
-
-PyCharm默认快捷键（系统默认最全）英文版
-
-红色高亮显示文本为本人最常用的快捷键。系统默认快捷键之外，还有一些其他的操作技巧，请移步：
+                            问题1.钞票支付问题。有1元、2元、5元、10元、20元、50元、100元的钞票无穷多张。现使用这些钞票支付x元，最少需要多少张？例如，X=628最佳支付方法：6张100块的，1张20块的，1张5块的，1张2块的，1张1块的；共需要6+1+
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-07-14
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-09-06
+                            </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                    编程学习
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Techdim
                             
                         </span>
                     </div>
                 </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Python/">
-                        <span class="chip bg-color">Python</span>
-                    </a>
-                    
-                </div>
+
                 
             </div>
         </div>
@@ -597,35 +585,36 @@ PyCharm默认快捷键（系统默认最全）英文版
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/07/10/argparse-de-ji-ben-yong-fa/">
+                <a href="/2020/08/26/gao-tong-snpe-shi-yong/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="Argparse的基本用法">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="高通snpe使用">
                         
-                        <span class="card-title">Argparse的基本用法</span>
+                        <span class="card-title">高通snpe使用</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Argparse的基本用法argparse是Python自带的命令行参数解析包
-import argparse
+                            版本snpe1.32支持Python的版本为Python2.7 和 Python3.4  
 
-def main():
-    parser = argparse.ArgumentParser(description="D
+安装Python3.4由于ubuntu18.04默认的Python版本为Python3.6 所以要先安装Python3.4
+
+
+下载Python3
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-10
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-26
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                    编程学习
+                            <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    深度学习
                                 </a>
                             
                             
@@ -635,8 +624,8 @@ def main():
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Python/">
-                        <span class="chip bg-color">Python</span>
+                    <a href="/tags/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97/">
+                        <span class="chip bg-color">边缘计算</span>
                     </a>
                     
                 </div>
