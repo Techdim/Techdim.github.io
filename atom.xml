@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://techdim.github.io/"/>
-  <updated>2020-09-14T02:18:08.408Z</updated>
+  <updated>2020-09-14T02:42:34.577Z</updated>
   <id>http://techdim.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>batchnorm</title>
+    <link href="http://techdim.github.io/2020/09/14/batchnorm/"/>
+    <id>http://techdim.github.io/2020/09/14/batchnorm/</id>
+    <published>2020-09-14T02:42:02.000Z</published>
+    <updated>2020-09-14T02:42:34.577Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;Batchnorm原理详解&quot;&gt;&lt;a href=&quot;#Batchnorm原理详解&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>贪心算法</title>
